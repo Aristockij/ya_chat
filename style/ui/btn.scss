@@ -1,0 +1,11 @@
+.btn__base{
+  height: 46px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $blue;
+  border-radius: 6px;
+  color: $white;
+  font-size: 18px;
+}

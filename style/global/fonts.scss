@@ -1,0 +1,15 @@
+$fonts-path: '/assets/fonts/PTSans-Regular';
+
+@font-face {
+  font-family: 'PT Sans';
+  src: url('#{$fonts-path}.eot');
+  src: url('#{$fonts-path}.eot?#iefix') format('embedded-opentype'),
+  url('#{$fonts-path}.woff2') format('woff2'),
+  url('#{$fonts-path}.woff') format('woff'),
+  url('#{$fonts-path}.ttf') format('truetype'),
+  url('#{$fonts-path}.svg#PTSans-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+

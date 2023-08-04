@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Users/aristockij/Documents/GitHub/lessons/ya-lessons/ya_chat/style/global/index.scss">
+    <title>Chat</title>
+</head>
+<body>
+<div class="layout__center">
+    <div class="sign__wrap">
+        <div class="sign__wrap-title">
+            Регистрация
+        </div>
+        <form>
+            <div>
+                {{>sign-input fieldName='email' label='Почта'}}
+                {{>sign-input fieldName='login' label='Логин'}}
+                {{>sign-input fieldName='first_name' label='Имя'}}
+                {{>sign-input fieldName='second_name' label='Фамилия'}}
+                {{>sign-input fieldName='phone' label='Телефон'}}
+                {{>sign-input fieldName='password' label='Пароль'}}
+                {{>sign-input fieldName='password' label='Повторите пароль'}}
+            </div>
+            <div class="sign__wrap-btn">
+                {{>btn label='Зарегистрироваться'}}
+                <a class="sign__link" href="./index.html">войти</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
