@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./style/global/index.scss">
+    <title>Chat</title>
+  </head>
+  <body>
+  <section class="layout__center">
+      <div class="sign__wrap">
+          <div class="sign__wrap-title">
+              Вход
+          </div>
+          <form class="sign__wrap-form">
+              <div>
+                  {{>sign-input fieldName='login' label='Имя'}}
+                  {{>sign-input fieldName='password' label='Пароль'}}
+              </div>
+              <div>
+                  {{>btn label='Войти'}}
+                  <a class="sign__link" href="./signup.html">Зарегистрироваться</a>
+              </div>
+          </form>
+      </div>
+  </section>
+  </body>
+</html>

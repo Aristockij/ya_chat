@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+  <link rel="stylesheet" href="./style/global/index.scss">
+</head>
+<body>
+    <section class="profile__wrap">
+        <a href="/chat.html" class="arrow__back">
+            <img src="/icons/arrow.svg" alt="back">
+        </a>
+        {{>profile-avatar}}
+        <form class="profile__info-list" action="">
+            <ul>
+                {{>profile-item-input itemId='email' itemName='Почта' itemValue='dk@yandex.ru'}}
+                {{>profile-item-input itemId='login' itemName='Логин' itemValue='dmitry'}}
+                {{>profile-item-input itemId='first_name' itemName='Имя' itemValue='Дмитрий'}}
+                {{>profile-item-input itemId='second_name' itemName='Фамилия' itemValue='Дк'}}
+                {{>profile-item-input itemId='display_name' itemName='Имя в чате' itemValue='Дк'}}
+                {{>profile-item-input itemId='phone' itemName='Телефон' itemValue='+7 (999) 999 99 99'}}
+            </ul>
+            {{>btn typeBtn='submit' label='сохранить'}}
+        </form>
+    </section>
+</body>
+</html>

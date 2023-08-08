@@ -1,5 +1,6 @@
 @import "reset";
 @import "../style";
+@import "content";
 
 body {
   margin: 0;
@@ -14,11 +15,6 @@ body {
   color: $black;
   overflow: auto !important;
 }
-.layout__center{
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.link__blue{
+  color: $blue;
 }

@@ -1,28 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/Users/aristockij/Documents/GitHub/lessons/ya-lessons/ya_chat/style/global/index.scss">
+<head>
+    <meta charset="UTF-8">
     <title>Chat</title>
-  </head>
-  <body>
-  <div class="layout__center">
-      <div class="sign__wrap">
-          <div class="sign__wrap-title">
-              Вход
-          </div>
-          <form class="sign__wrap-form">
-              <div>
-                  {{>sign-input fieldName='login' label='Имя'}}
-                  {{>sign-input fieldName='password' label='Пароль'}}
-              </div>
-              <div>
-                  {{>btn label='Войти'}}
-                  <a class="sign__link" href="./signup.html">Зарегистрироваться</a>
-              </div>
-          </form>
-      </div>
-  </div>
-  </body>
+    <link rel="stylesheet" href="./style/global/index.scss">
+</head>
+<body>
+    <section class="layout__center">
+        <nav class="nav__pages">
+            <ul>
+                <li><a href="/signin.html">Вход</a></li>
+                <li><a href="/signup.html">Регистрация</a></li>
+                <li><a href="/chat.html">Чат</a></li>
+                <li><a href="/profile.html">Профиль</a></li>
+                <li><a href="/change-info.html">Изменить данные</a></li>
+                <li><a href="/change-password.html">Изменить пароль</a></li>
+                <li><a href="/404.html">404</a></li>
+                <li><a href="/500.html">5**</a></li>
+            </ul>
+        </nav>
+    </section>
+
+</body>
 </html>
