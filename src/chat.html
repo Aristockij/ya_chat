@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<main>
     <section class="chat__wrap">
         <div class="chat__wrap-left">
             <form action="" class="form__search">
@@ -18,15 +19,15 @@
             <div class="chat__wrap-list">
                 <div class="chat__wrap-scroll">
                     {{>message-item
-                    name='Вася пупкинпупкинпупкин'
-                    date='10 апр 2020'
-                    message='тут будет какой то текст который будет ограничен по символам'
-                    new-message='2'
+                            name='Вася пупкинпупкинпупкин'
+                            date='10 апр 2020'
+                            message='тут будет какой то текст который будет ограничен по символам'
+                            new-message='2'
                     }}
                 </div>
             </div>
             <div class="profile__links">
-                <a class="message__item-avatar" href="/profile.html">
+                <a class="message__item-avatar" href="./profile.html">
                     <img src="./icons/avatar.svg" alt="avatar">
                 </a>
                 <div class="message__item-avatar">
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="chat__wrap-setting">
-                    <img src="/icons/dots.svg" alt="dots">
+                    <img src="./icons/dots.svg" alt="dots">
                 </div>
             </div>
             <div class="chat__wrap-list">
@@ -63,13 +64,15 @@
                 <button type="button" class="chat__wrap-file">
                     <img src="./icons/addfile.svg" alt="file">
                 </button>
-                <input id="send-message" type="text">
+                <input id="send-message" name="message" type="text">
                 <label for="send-message">
                     <img src="./icons/send.svg" alt="send">
                 </label>
             </form>
         </div>
     </section>
+</main>
+
 </body>
 
 </html>
