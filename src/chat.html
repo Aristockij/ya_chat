@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/global/index.scss">
     <title>Chat</title>
 </head>
+
 <body>
+<main>
     <section class="chat__wrap">
         <div class="chat__wrap-left">
             <form action="" class="form__search">
@@ -24,7 +27,7 @@
                 </div>
             </div>
             <div class="profile__links">
-                <a class="message__item-avatar" href="/profile.html">
+                <a class="message__item-avatar" href="./profile.html">
                     <img src="./icons/avatar.svg" alt="avatar">
                 </a>
                 <div class="message__item-avatar">
@@ -43,13 +46,14 @@
                     </div>
                 </div>
                 <div class="chat__wrap-setting">
-                    <img src="/icons/dots.svg" alt="dots">
+                    <img src="./icons/dots.svg" alt="dots">
                 </div>
             </div>
             <div class="chat__wrap-list">
                 <div class="chat__wrap-scroll">
                     <div class="message__text message__input">
-                        тут какой то текст ссоообщения который будет приходить, и размер облака текста будет зависить от контента
+                        тут какой то текст ссоообщения который будет приходить, и размер облака текста будет зависить от
+                        контента
                     </div>
                     <div class="message__text message__output">
                         тут тоже какой то текст
@@ -60,12 +64,15 @@
                 <button type="button" class="chat__wrap-file">
                     <img src="./icons/addfile.svg" alt="file">
                 </button>
-                <input id="send-message" type="text">
+                <input id="send-message" name="message" type="text">
                 <label for="send-message">
                     <img src="./icons/send.svg" alt="send">
                 </label>
             </form>
         </div>
     </section>
+</main>
+
 </body>
+
 </html>

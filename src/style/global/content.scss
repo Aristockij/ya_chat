@@ -9,6 +9,10 @@
     &:hover{
       background: $grey1;
     }
+    a{
+      width: 100%;
+      display: inline-block;
+    }
   }
 }
 .layout__center{

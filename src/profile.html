@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <title>Chat</title>
     <link rel="stylesheet" href="./style/global/index.scss">
 </head>
+
 <body>
+<main>
     <section class="profile__wrap">
-                <a href="/chat.html" class="arrow__back">
-                    <img src="/icons/arrow.svg" alt="back">
-                </a>
-                {{>profile-avatar}}
-                <div class="profile__info-list">
-                    <ul>
-                      {{>profile-item itemName='Почта' itemValue='dk@yandex.ru'}}
-                      {{>profile-item itemName='Логин' itemValue='dmitry'}}
-                      {{>profile-item itemName='Имя' itemValue='Дмитрий'}}
-                      {{>profile-item itemName='Фамилия' itemValue='Дк'}}
-                      {{>profile-item itemName='Имя в чате' itemValue='Дк'}}
-                      {{>profile-item itemName='Телефон' itemValue='+7 (999) 999 99 99'}}
-                    </ul>
-                </div>
-                <div class="profile__info-btns">
-                    <a href="/change-info.html">Изменить данные</a>
-                    <a href="/change-password.html">Изменить пароль</a>
-                    <button>
-                        Выйти
-                    </button>
-                </div>
+        <a href="./chat.html" class="arrow__back">
+            <img src="./icons/arrow.svg" alt="back">
+        </a>
+        {{>profile-avatar}}
+        <div class="profile__info-list">
+            <ul>
+                {{>profile-item itemName='Почта' itemValue='dk@yandex.ru'}}
+                {{>profile-item itemName='Логин' itemValue='dmitry'}}
+                {{>profile-item itemName='Имя' itemValue='Дмитрий'}}
+                {{>profile-item itemName='Фамилия' itemValue='Дк'}}
+                {{>profile-item itemName='Имя в чате' itemValue='Дк'}}
+                {{>profile-item itemName='Телефон' itemValue='+7 (999) 999 99 99'}}
+            </ul>
+        </div>
+        <div class="profile__info-btns">
+            <a href="./change-info.html">Изменить данные</a>
+            <a href="./change-password.html">Изменить пароль</a>
+            <button type="button">
+                Выйти
+            </button>
+        </div>
     </section>
+</main>
+
 </body>
+
 </html>
