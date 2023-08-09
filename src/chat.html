@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/global/index.scss">
     <title>Chat</title>
 </head>
+
 <body>
     <section class="chat__wrap">
         <div class="chat__wrap-left">
@@ -16,10 +18,10 @@
             <div class="chat__wrap-list">
                 <div class="chat__wrap-scroll">
                     {{>message-item
-                            name='Вася пупкинпупкинпупкин'
-                            date='10 апр 2020'
-                            message='тут будет какой то текст который будет ограничен по символам'
-                            new-message='2'
+                    name='Вася пупкинпупкинпупкин'
+                    date='10 апр 2020'
+                    message='тут будет какой то текст который будет ограничен по символам'
+                    new-message='2'
                     }}
                 </div>
             </div>
@@ -49,7 +51,8 @@
             <div class="chat__wrap-list">
                 <div class="chat__wrap-scroll">
                     <div class="message__text message__input">
-                        тут какой то текст ссоообщения который будет приходить, и размер облака текста будет зависить от контента
+                        тут какой то текст ссоообщения который будет приходить, и размер облака текста будет зависить от
+                        контента
                     </div>
                     <div class="message__text message__output">
                         тут тоже какой то текст
@@ -68,4 +71,5 @@
         </div>
     </section>
 </body>
+
 </html>
