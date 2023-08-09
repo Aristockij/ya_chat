@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<main>
     <section class="layout__center">
         <div class="sign__wrap">
             <div class="sign__wrap-title">
@@ -22,15 +23,17 @@
                     {{>sign-input fieldName='second_name' label='Фамилия'}}
                     {{>sign-input fieldName='phone' label='Телефон'}}
                     {{>sign-input fieldName='password' label='Пароль'}}
-                    {{>sign-input fieldName='password' label='Повторите пароль'}}
+                    {{>sign-input fieldName='password2' label='Повторите пароль'}}
                 </div>
                 <div class="sign__wrap-btn">
                     {{>btn label='Зарегистрироваться'}}
-                    <a class="sign__link" href="signin.html">Войти</a>
+                    <a class="sign__link" href="./signin.html">Войти</a>
                 </div>
             </form>
         </div>
     </section>
+</main>
+
 </body>
 
 </html>

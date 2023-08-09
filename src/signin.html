@@ -9,23 +9,26 @@
 </head>
 
 <body>
-  <section class="layout__center">
-    <div class="sign__wrap">
-      <div class="sign__wrap-title">
-        Вход
-      </div>
-      <form class="sign__wrap-form">
-        <div>
-          {{>sign-input fieldName='login' label='Имя'}}
-          {{>sign-input fieldName='password' label='Пароль'}}
+<main>
+    <section class="layout__center">
+        <div class="sign__wrap">
+            <div class="sign__wrap-title">
+                Вход
+            </div>
+            <form class="sign__wrap-form">
+                <div>
+                    {{>sign-input fieldName='login' label='Имя'}}
+                    {{>sign-input fieldName='password' label='Пароль'}}
+                </div>
+                <div>
+                    {{>btn label='Войти'}}
+                    <a class="sign__link" href="./signup.html">Зарегистрироваться</a>
+                </div>
+            </form>
         </div>
-        <div>
-          {{>btn label='Войти'}}
-          <a class="sign__link" href="./signup.html">Зарегистрироваться</a>
-        </div>
-      </form>
-    </div>
-  </section>
+    </section>
+</main>
+
 </body>
 
 </html>
