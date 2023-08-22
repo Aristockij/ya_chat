@@ -9,6 +9,21 @@
 
 <body>
 <main>
+    <div>
+        <template id="TestComponent">
+            <div>
+                <input type="text" ya-model="title" />
+                <h1>Title: <span ya-model="title"></span></h1>
+                <button ya-click="handleClick">Replace from JS</button>
+            </div>
+        </template>
+
+        <TestComponent></TestComponent>
+        <TestComponent></TestComponent>
+
+    </div>
+
+
     <section class="layout__center">
         <nav class="nav__pages">
             <ul>
@@ -25,7 +40,8 @@
     </section>
 </main>
 
-
+<script
+        src = './lib/index.ts'></script>
 </body>
 
 </html>

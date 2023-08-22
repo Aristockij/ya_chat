@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "tsc --noEmit",
     "build": "vite build",
     "start": "npm run build && node server.js"
   },
@@ -12,10 +13,18 @@
     "node": "^18.17.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb": "^19.0.4",
     "express": "^4.18.2",
     "handlebars": "^4.7.8",
     "sass": "^1.64.2",
+    "typescript": "^5.1.6",
     "vite": "^4.4.5",
     "vite-plugin-handlebars": "^1.6.0"
+  },
+  "dependencies": {
+    "vite-plugin-checker": "^0.6.1"
   }
 }
