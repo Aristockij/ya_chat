@@ -13,21 +13,36 @@ export class SignIn extends Block {
       },
       fields: [
         {
+          fieldValue: '',
           label: "Имя",
           name: "login",
           ref: "loginRef",
           errorMessage: 'введите имя',
-          onChange: (t) => {
+          onChange: (event) => {
+            val.login = event.target.value;
+          },
+          onFocusOut: (t)=>{
             if(t.target.value.length < 3){
               this.refs.loginRef.setProps({
+                fieldValue: t.target.value,
+                errorMessage: "слишком короткий логин",
                 req: true,
               })
-            }else{
+
+            }else if(t.target.value.length >= 20){
               this.refs.loginRef.setProps({
+                fieldValue: t.target.value,
+                errorMessage: "слишком длинный логин",
+                req: true,
+              })
+            }
+            else{
+              this.refs.loginRef.setProps({
+                fieldValue: t.target.value,
                 req: false
               })
             }
-          },
+          }
         },
         {
           label: "Пароль",
@@ -44,7 +59,6 @@ export class SignIn extends Block {
 
     });
   }
-
   render() {
     return this.compile(template, this.props);
   }

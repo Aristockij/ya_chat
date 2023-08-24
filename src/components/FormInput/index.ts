@@ -7,7 +7,7 @@ interface FormInputProps {
     onKeyUp?: () => void;
     onFocusin?: () => void;
     onFocusOut?: () => void;
-    onChange?: (value: string) => void;
+    onChange?: () => void;
     events: {
         focusin: () => void;
         focusout: () => void;
@@ -21,7 +21,7 @@ export class FormInput extends Block {
         super({
             ...props,
             req: false,
-            value: props.value || '',
+            fieldValue: props.value || '',
             errorMessage: 'ошибка',
             events: {
                 focusin: props.onFocusin,
