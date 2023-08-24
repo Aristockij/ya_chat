@@ -47,6 +47,18 @@
   top: -15px;
     font-size: 8px;
   }
+  &-err{
+    input{
+      border-bottom: 1px solid red;
+    }
+    span{
+      font-size: 10px;
+      color: red;
+      position: absolute;
+      left: 0;
+      bottom: -23px;
+    }
+  }
 }
 .sign__link{
   width: 100%;

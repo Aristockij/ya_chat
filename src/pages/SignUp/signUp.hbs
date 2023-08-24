@@ -1,0 +1,18 @@
+<section class="layout__center">
+    <div class="sign__wrap">
+        <div class="sign__wrap-title">
+            Регистрация
+        </div>
+        <form>
+            <div>
+                {{#each fields}}
+                    {{{FormInput fieldName=this.name label=this.label onKeyUp=this.onKeyUp}}}
+                {{/each}}
+            </div>
+            <div class="sign__wrap-btn">
+                {{{Button className="btn__base"  label='Зарегистрироваться'}}}
+                {{{Button ref="signIn" className="sign__link" label='Войти' onClick=onSignIn}}}
+            </div>
+        </form>
+    </div>
+</section>
