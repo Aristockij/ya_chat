@@ -6,11 +6,18 @@
         <form>
             <div>
                 {{#each fields}}
-                    {{{FormInput fieldName=this.name label=this.label onKeyUp=this.onKeyUp}}}
+                    {{{FormInput
+                            fieldName=this.name
+                            label=this.label
+                            value=this.value
+                            onChange=this.onChange
+                            onFocusOut=this.onFocusOut
+                            onFocusin=this.onFocusin
+                    }}}
                 {{/each}}
             </div>
             <div class="sign__wrap-btn">
-                {{{Button className="btn__base"  label='Зарегистрироваться'}}}
+                {{{Button className="btn__base"  label='Зарегистрироваться' onClick=onSubmit ref="signupBtn" }}}
                 {{{Button ref="signIn" className="sign__link" label='Войти' onClick=onSignIn}}}
             </div>
         </form>

@@ -5,12 +5,18 @@ import {render} from "../../utils/render";
 export class SignIn extends Block {
   constructor() {
     const val = {
-      login:  ''
+      login:  '',
+      pass: '',
     }
     super({
       onSignUp: ()=> {
         render('signUp')
       },
+      onSubmit:(e)=>{
+        e.preventDefault();
+        console.log(val);
+      },
+
       fields: [
         {
           fieldValue: '',
@@ -21,38 +27,16 @@ export class SignIn extends Block {
           onChange: (event) => {
             val.login = event.target.value;
           },
-          onFocusOut: (t)=>{
-            if(t.target.value.length < 3){
-              this.refs.loginRef.setProps({
-                fieldValue: t.target.value,
-                errorMessage: "слишком короткий логин",
-                req: true,
-              })
-
-            }else if(t.target.value.length >= 20){
-              this.refs.loginRef.setProps({
-                fieldValue: t.target.value,
-                errorMessage: "слишком длинный логин",
-                req: true,
-              })
-            }
-            else{
-              this.refs.loginRef.setProps({
-                fieldValue: t.target.value,
-                req: false
-              })
-            }
+          onFocusOut: (t) => {
+            this.refs.loginRef.loginMatches(val.login, this.refs.loginRef);
           }
         },
         {
           label: "Пароль",
           name: "password",
           ref: "pasRef",
-          onKeyUp: (e)=>{
-            console.log(e)
-          },
-          onFocus: (e)=>{
-            console.log(e)
+          onChange: (event) => {
+            val.pass = event.target.value;
           },
         },
       ],

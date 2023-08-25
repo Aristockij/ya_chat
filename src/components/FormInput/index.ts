@@ -15,6 +15,7 @@ interface FormInputProps {
         keyup: () => void;
     };
 }
+const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
 
 export class FormInput extends Block {
     constructor(props: FormInputProps) {
@@ -31,13 +32,29 @@ export class FormInput extends Block {
             },
         });
     }
-    getValue() {
-        const inputElement = this.element.querySelector('input') as HTMLInputElement;
-        if (inputElement) {
-            return inputElement.value;
+    loginMatches(val, ref){
+        if(val < 3 || !loginRegExp.test(val)){
+            ref.setProps({
+                fieldValue: val,
+                errorMessage: "пароль должен быть длиннее 3 символов и начинаться с буквы",
+                req: true,
+            })
+            console.log(!loginRegExp.test(val))
+        }else if(val  >= 20 || !loginRegExp.test(val)){
+            ref.setProps({
+                fieldValue: val,
+                errorMessage: "пароль должен быть короче 20 символов и начинаться с буквы",
+                req: true,
+            })
         }
-        return '';
+        else{
+            ref.setProps({
+                fieldValue: val,
+                req: false
+            })
+        }
     }
+
     render() {
         return this.compile(template, this.props);
     }
