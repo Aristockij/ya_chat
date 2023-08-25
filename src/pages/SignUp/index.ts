@@ -26,6 +26,10 @@ export class SignUp extends Block {
         {
           name: "email",
           label: "Почта",
+          ref: "emailRef",
+          onFocusOut: (t)=>{
+            this.refs.emailRef.mailMatches(t.target.value, this.refs.emailRef);
+          },
           onChange: (event) => {
             val.email = event.target.value;
           },
@@ -33,47 +37,35 @@ export class SignUp extends Block {
         {
           name: "login",
           label: "Логин",
+          ref: "loginRef",
           onChange: (event) => {
             val.login = event.target.value;
           },
+          onFocusOut: (t)=>{
+            this.refs.loginRef.loginMatches(t.target.value, this.refs.loginRef);
+          }
         },
         {
           name: "first_name",
           label: "Имя",
+          ref: "first_nameRef",
           onChange: (event) => {
             val.first_name = event.target.value;
           },
           onFocusOut: (t)=>{
-            this.refs.loginRef.loginMatches(t.target.value, this.refs.loginRef);
-
-            // if(t.target.value.length < 3 || !loginRegExp.test(t.target.value)){
-            //   this.refs.loginRef.setProps({
-            //     fieldValue: t.target.value,
-            //     errorMessage: "пароль должен быть длиннее 3 символов и начинаться с буквы",
-            //     req: true,
-            //   })
-            //   console.log(!loginRegExp.test(t.target.value))
-            // }else if(t.target.value.length >= 20 || !loginRegExp.test(t.target.value)){
-            //   this.refs.loginRef.setProps({
-            //     fieldValue: t.target.value,
-            //     errorMessage: "пароль должен быть короче 20 символов и начинаться с буквы",
-            //     req: true,
-            //   })
-            // }
-            // else{
-            //   this.refs.loginRef.setProps({
-            //     fieldValue: t.target.value,
-            //     req: false
-            //   })
-            // }
+            this.refs.first_nameRef.nameMatches(t.target.value, this.refs.first_nameRef);
           }
         },
         {
           name: "second_name",
           label: "Фамилия",
+          ref: "second_nameRef",
           onChange: (event) => {
             val.second_name = event.target.value;
           },
+          onFocusOut: (t)=>{
+            this.refs.second_nameRef.nameMatches(t.target.value, this.refs.second_nameRef);
+          }
         },
         {
           name: "phone",

@@ -28,7 +28,7 @@ export class SignIn extends Block {
             val.login = event.target.value;
           },
           onFocusOut: (t) => {
-            this.refs.loginRef.loginMatches(val.login, this.refs.loginRef);
+            this.refs.loginRef.loginMatches(t.target.value, this.refs.loginRef);
           }
         },
         {
