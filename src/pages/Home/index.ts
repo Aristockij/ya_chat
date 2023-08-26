@@ -19,6 +19,42 @@ export class HomePage extends Block {
             render('signUp');
           }
         },
+        {
+          label: 'Чат',
+          onClick: () => {
+            render('chat');
+          }
+        },
+        {
+          label: 'Профиль',
+          onClick: () => {
+            render('profile');
+          }
+        },
+        {
+          label: 'Изменить данные',
+          onClick: () => {
+            render('changeInfo');
+          }
+        },
+        {
+          label: 'Изменить пароль',
+          onClick: () => {
+            render('changePassword');
+          }
+        },
+        {
+          label: '5**',
+          onClick: () => {
+            render('page500');
+          }
+        },
+        {
+          label: '404',
+          onClick: () => {
+            render('page404');
+          }
+        },
       ]
     });
   }

@@ -1,17 +1,15 @@
-import Handlebars from 'handlebars';
-import { HelperOptions } from "handlebars";
-import template from './form.hbs';
 import Block from '../../utils/Block';
+import template from './sendMessageBtn.hbs';
 
-interface FormProps {
+interface SendMessageBtnProps {
     onClick?: () => void;
     events: {
         click: () => void;
     };
 }
 
-export class Form extends Block {
-    constructor(props: FormProps) {
+export class SendMessageBtn extends Block {
+    constructor(props: SendMessageBtnProps) {
         super({
             ...props,
             events: {

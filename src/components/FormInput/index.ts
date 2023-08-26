@@ -4,6 +4,7 @@ import template from './formInput.hbs';
 interface FormInputProps {
     label: string;
     value: string;
+    showPass: boolean;
     onKeyUp?: () => void;
     onFocusin?: () => void;
     onFocusOut?: () => void;
@@ -15,10 +16,6 @@ interface FormInputProps {
         keyup: () => void;
     };
 }
-const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
-const mailRegExp = /.+@.+\..+/i;
-const passRegExp = /^(?=.[A-Z])(?=.\d)[A-Za-z\d]{8,40}$/;
-const nameRegExp = /^[a-яё]+(?:[-][a-яё]+)*$/i
 
 
 export class FormInput extends Block {
@@ -26,6 +23,7 @@ export class FormInput extends Block {
         super({
             ...props,
             req: false,
+            showPass: false,
             fieldValue: props.value || '',
             errorMessage: 'ошибка',
             events: {
@@ -36,69 +34,24 @@ export class FormInput extends Block {
             },
         });
     }
-    loginMatches(val, ref){
-        if(val.length < 3 || !loginRegExp.test(val)){
+
+
+    checkMatches(val, ref, reg, mes) {
+        if (!reg.test(val)) {
             ref.setProps({
                 fieldValue: val,
-                errorMessage: "пароль должен быть длиннее 3 символов и начинаться с буквы",
+                errorMessage: mes,
                 req: true,
             })
-        }else if(val.length  >= 20 || !loginRegExp.test(val)){
-            ref.setProps({
-                fieldValue: val,
-                errorMessage: "пароль должен быть короче 20 символов и начинаться с буквы",
-                req: true,
-            })
-        }
-        else{
+            console.log(val)
+        } else {
             ref.setProps({
                 fieldValue: val,
                 req: false
             })
         }
     }
-    mailMatches(val, ref){
-        if(!mailRegExp.test(val)){
-            ref.setProps({
-                fieldValue: val,
-                errorMessage: "символ @ обязателен",
-                req: true,
-            })
-        }else{
-            ref.setProps({
-                fieldValue: val,
-                req: false
-            })
-        }
-    }
-    passMatches(val, ref){
-        if(!passRegExp.test(val)){
-            ref.setProps({
-                fieldValue: val,
-                errorMessage: "пароль должен быть больше 8 символов",
-                req: true,
-            })
-        }else{
-            ref.setProps({
-                fieldValue: val,
-                req: false
-            })
-        }
-    }
-    nameMatches(val, ref){
-        if(!nameRegExp.test(val)){
-            ref.setProps({
-                fieldValue: val,
-                errorMessage: "есть недопустимые символы",
-                req: true,
-            })
-        }else{
-            ref.setProps({
-                fieldValue: val,
-                req: false
-            })
-        }
-    }
+
     render() {
         return this.compile(template, this.props);
     }

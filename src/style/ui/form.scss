@@ -135,4 +135,11 @@
     padding: 0 15px;
     font-size: 16px;
   }
+  &-err{
+    position: absolute;
+    color: red;
+    font-size: 10px;
+    bottom: -17px;
+    left: 60px;
+  }
 }
