@@ -1,0 +1,11 @@
+<section class="layout__center">
+    <nav class="nav__pages">
+        <ul>
+
+            {{#each buttons}}
+                <li>{{{Button label=this.label onClick=this.onClick}}}</li>
+            {{/each}}
+
+        </ul>
+    </nav>
+</section>

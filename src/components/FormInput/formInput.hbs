@@ -1,0 +1,11 @@
+<div class="{{ className }}" >
+    {{#if req}}
+        <span class="sign__input-err">
+            {{errorMessage}}
+        </span>
+    {{/if}}
+   <input value="{{ fieldValue }}" id="{{ fieldName }}" name="{{ fieldName }}" type="{{ fieldType }}" required>
+   <label for="{{ fieldName }}">{{ label }}</label>
+</div>
+
+

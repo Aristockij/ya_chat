@@ -9,9 +9,10 @@
     &:hover{
       background: $grey1;
     }
-    a{
+    button{
       width: 100%;
       display: inline-block;
+      text-align: left;
     }
   }
 }
@@ -73,6 +74,7 @@
   position: relative;
   border-radius: 5px;
   display: flex;
+  cursor: pointer;
   margin-bottom: 20px;
   &:before{
     content: '';
@@ -234,6 +236,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
     font-size: 16px;
+    position: relative;
     &:last-child{
       border-bottom: none;
     }
@@ -250,22 +253,22 @@
   }
   &-btns{
     width: 510px;
-
-    a{
+    &-logout{
+      color: red;
+      font-size: 16px;
+    }
+    &-link{
       color: $blue;
       display: block;
       border-bottom: 1px solid $grey1;
       font-size: 16px;
       transition: .4s;
+      width: 100%;
+      text-align: left;
       &:hover{
         opacity: .5;
       }
     }
-    button{
-      color: red;
-      font-size: 16px;
-    }
-
   }
 }
 .arrow__back{
