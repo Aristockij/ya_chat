@@ -7,7 +7,7 @@ export class SignIn extends Block {
   constructor() {
     const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
 
-    const val = {
+    const val:Record<string, string> = {
       login:  '',
       password: '',
     }
@@ -35,7 +35,10 @@ export class SignIn extends Block {
             }
           }
         }
-
+        console.log(val);
+        if (hasErrors) {
+          return;
+        }
         console.log(val);
       },
       fields: [
@@ -46,11 +49,13 @@ export class SignIn extends Block {
           ref: "loginRef",
           errorMessage: 'введите имя',
           fieldType: "text",
-          onChange: (event: object) => {
-            val.login = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.login = target.value;
           },
-          onFocusOut: (t: object) => {
-            (this.refs.loginRef as FormInput).checkMatches(t.target.value, this.refs.loginRef, loginRegExp, 'логин должен быть длиннее 3 символов и начинаться с буквы');
+          onFocusOut: (t: FocusEvent) => {
+            const target = t.target as HTMLInputElement;
+            (this.refs.loginRef as FormInput).checkMatches(target.value, this.refs.loginRef, loginRegExp, 'логин должен быть длиннее 3 символов и начинаться с буквы');
           }
         },
         {
@@ -59,8 +64,9 @@ export class SignIn extends Block {
           ref: "pasRef",
           showPass: true,
           fieldType: "password",
-          onChange: (event: object) => {
-            val.password = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.password = target.value;
           },
         },
       ],

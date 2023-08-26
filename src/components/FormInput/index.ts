@@ -39,7 +39,7 @@ export class FormInput extends Block {
     }
 
 
-    checkMatches(val:object, ref: BlockInterface, reg: any, mes:string) {
+    checkMatches(val:string, ref: BlockInterface, reg: any, mes:string) {
         if (!reg.test(val)) {
             ref.setProps({
                 fieldValue: val,

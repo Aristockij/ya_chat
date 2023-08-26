@@ -2,10 +2,13 @@ import Block from '../../utils/Block';
 import template from './chat.hbs';
 import {render} from "../../utils/render";
 
+interface FieldValues {
+    message: string;
+}
 
 export class Chat extends Block {
     constructor() {
-        const val = {
+        const val: FieldValues = {
             message: '',
         }
         super({
@@ -23,8 +26,9 @@ export class Chat extends Block {
                 console.log(val)
                 val.message = ''
             },
-            onChange: (event: object) => {
-                val.message = event.target.value;
+            onChange: (e: FocusEvent) => {
+                const target = e.target as HTMLInputElement;
+                val.message = target.value;
             },
             errMes: false,
             users:[
