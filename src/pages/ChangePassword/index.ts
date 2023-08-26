@@ -11,7 +11,7 @@ export class ChangePassword extends Block {
             linkChat:()=>{
                 render('profile')
             },
-            onSubmit: (e) => {
+            onSubmit: (e: MouseEvent) => {
                 e.preventDefault();
                 let fieldsName = this.props.fields;
                 let hasErrors = false
@@ -52,10 +52,10 @@ export class ChangePassword extends Block {
                     ref: "oldPass",
                     fieldType: "text",
                     showPass: true,
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.oldPassword = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.oldPass as FormInput).checkMatches(t.target.value, this.refs.oldPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
@@ -65,10 +65,10 @@ export class ChangePassword extends Block {
                     ref: "newPass",
                     fieldType: "text",
                     showPass: true,
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.newPassword = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.newPass as FormInput).checkMatches(t.target.value, this.refs.newPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
@@ -78,10 +78,10 @@ export class ChangePassword extends Block {
                     ref: "passRefAgain",
                     fieldType: "text",
                     showPass: true,
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.newPasswordAgain = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.passRefAgain as FormInput).checkMatches(t.target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },

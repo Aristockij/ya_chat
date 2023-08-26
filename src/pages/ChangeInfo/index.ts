@@ -14,7 +14,7 @@ export class ChangeInfo extends Block {
             linkChat:()=>{
                 render('profile')
             },
-            onSubmit: (e) => {
+            onSubmit: (e: MouseEvent) => {
                 e.preventDefault();
                 let fieldsName = this.props.fields;
                 let hasErrors = false
@@ -48,10 +48,10 @@ export class ChangeInfo extends Block {
                     ref: "emailRef",
                     fieldType: "text",
                     value: "dk@yandex.ru",
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.emailRef as FormInput).checkMatches(t.target.value, this.refs.emailRef, mailRegExp ,"символ @ обязателен");
                     },
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.email = event.target.value;
                     },
                 },
@@ -61,10 +61,10 @@ export class ChangeInfo extends Block {
                     ref: "loginRef",
                     fieldType: "text",
                     value: "dmitry",
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.login = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.loginRef as FormInput).checkMatches(t.target.value, this.refs.loginRef, loginRegExp, "логин должен быть длиннее 3 символов и начинаться с буквы");
                     }
                 },
@@ -74,10 +74,10 @@ export class ChangeInfo extends Block {
                     ref: "first_nameRef",
                     fieldType: "text",
                     value: "Дмитрий",
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.first_name = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.first_nameRef as FormInput).checkMatches(t.target.value, this.refs.first_nameRef, nameRegExp,  "первая буква заглавная, без пробелов, цифр, спецсимволов");
                     }
                 },
@@ -87,10 +87,10 @@ export class ChangeInfo extends Block {
                     ref: "second_nameRef",
                     fieldType: "text",
                     value: "Дк",
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.second_name = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.second_nameRef as FormInput).checkMatches(t.target.value, this.refs.second_nameRef, nameRegExp,"первая буква заглавная, без пробелов, цифр, спецсимволов" );
                     }
                 },
@@ -100,10 +100,10 @@ export class ChangeInfo extends Block {
                     ref: "display_nameRef",
                     fieldType: "text",
                     value: "Дк",
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.display_name = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.display_nameRef as FormInput).checkMatches(t.target.value, this.refs.display_nameRef, loginRegExp,"длиннее 3 символов и начинаться с буквы" );
                     }
                 },
@@ -114,10 +114,10 @@ export class ChangeInfo extends Block {
                     fieldType: "text",
                     showPass: true,
                     value: "+7 (999) 999 99 99",
-                    onChange: (event) => {
+                    onChange: (event: object) => {
                         val.phone = event.target.value;
                     },
-                    onFocusOut: (t)=>{
+                    onFocusOut: (t: object)=>{
                         (this.refs.phoneRef as FormInput).checkMatches(t.target.value, this.refs.phoneRef, phoneRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },

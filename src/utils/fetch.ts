@@ -17,21 +17,21 @@ function queryStringify(data) {
 }
 
 class HTTPTransport {
-    get = (url, options = {}) => {
+    get = (url, options = {}, timeout) => {
 
-        return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+        return this.request(url, {...options, method: METHODS.GET}, timeout);
     };
 
-    post = (url, options = {}) => {
-        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+    post = (url, options = {}, timeout) => {
+        return this.request(url, {...options, method: METHODS.POST}, timeout);
     };
 
-    put = (url, options = {}) => {
-        return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
+    put = (url, options = {}, timeout) => {
+        return this.request(url, {...options, method: METHODS.PUT}, timeout);
     };
 
-    delete = (url, options = {}) => {
-        return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
+    delete = (url, options = {}, timeout) => {
+        return this.request(url, {...options, method: METHODS.DELETE}, timeout);
     };
 
     request = (url, options = {}, timeout = 5000) => {

@@ -15,7 +15,7 @@ export class SignIn extends Block {
       onSignUp: ()=> {
         render('signUp');
       },
-      onSubmit:(e)=>{
+      onSubmit:(e: MouseEvent)=>{
         e.preventDefault();
         let fieldsName = this.props.fields;
         let hasErrors = false
@@ -46,10 +46,10 @@ export class SignIn extends Block {
           ref: "loginRef",
           errorMessage: 'введите имя',
           fieldType: "text",
-          onChange: (event) => {
+          onChange: (event: object) => {
             val.login = event.target.value;
           },
-          onFocusOut: (t) => {
+          onFocusOut: (t: object) => {
             (this.refs.loginRef as FormInput).checkMatches(t.target.value, this.refs.loginRef, loginRegExp, 'логин должен быть длиннее 3 символов и начинаться с буквы');
           }
         },
@@ -59,7 +59,7 @@ export class SignIn extends Block {
           ref: "pasRef",
           showPass: true,
           fieldType: "password",
-          onChange: (event) => {
+          onChange: (event: object) => {
             val.password = event.target.value;
           },
         },

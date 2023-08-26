@@ -12,7 +12,7 @@ export class Chat extends Block {
             linkProfile: ()=>{
              render('profile')
             },
-            onSubmit: (e)=>{
+            onSubmit: (e: MouseEvent)=>{
                 e.preventDefault();
                 if(val.message.length === 0 ){
                   this.props.errMes = true;
@@ -23,7 +23,7 @@ export class Chat extends Block {
                 console.log(val)
                 val.message = ''
             },
-            onChange: (event) => {
+            onChange: (event: object) => {
                 val.message = event.target.value;
             },
             errMes: false,
