@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from './ProfileAvatar.hbs';
+import template from './profileAvatar.hbs';
 import avatar from '../../icons/avatar.svg';
 
 export class ProfileAvatar extends Block {
