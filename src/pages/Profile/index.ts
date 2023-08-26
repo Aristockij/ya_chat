@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from './Profile.hbs';
+import template from './profile.hbs';
 import {render} from "../../utils/render";
 import arrow from "../../icons/arrow.svg";
 
