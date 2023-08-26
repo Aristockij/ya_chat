@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import template from './changeInfo.hbs';
 import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
+import arrow from "../../icons/arrow.svg";
 
 export class ChangeInfo extends Block {
     constructor() {
@@ -41,7 +42,7 @@ export class ChangeInfo extends Block {
 
                 console.log(val);
             },
-
+            arrowImg: arrow,
             fields: [
                 {
                     name: "email",

@@ -1,6 +1,10 @@
 import Block from '../../utils/Block';
 import template from './chat.hbs';
 import {render} from "../../utils/render";
+import avatar from "../../icons/avatar.svg";
+import setting from "../../icons/setting.svg";
+import addFile from "../../icons/addfile.svg";
+import dots from "../../icons/dots.svg";
 
 interface FieldValues {
     message: string;
@@ -30,6 +34,10 @@ export class Chat extends Block {
                 const target = e.target as HTMLInputElement;
                 val.message = target.value;
             },
+            avatarImg: avatar,
+            settingImg: setting,
+            addFileImg: addFile,
+            dotsImg:  dots,
             errMes: false,
             users:[
                 {
