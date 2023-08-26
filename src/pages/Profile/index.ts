@@ -1,6 +1,7 @@
 import Block from '../../utils/Block';
 import template from './Profile.hbs';
 import {render} from "../../utils/render";
+import arrow from "../../icons/arrow.svg";
 
 
 export class Profile extends Block {
@@ -15,6 +16,7 @@ export class Profile extends Block {
             linkChangePassword: ()=>{
                 render('changePassword')
             },
+            arrowImg: arrow,
             items:[
                 {
                     itemName: "Почта",

@@ -13,10 +13,10 @@
         </div>
         <div class="profile__links">
             {{#Button onClick=linkProfile className="message__item-avatar" buttonType="button" }}
-                <img src="./icons/avatar.svg" alt="avatar">
+                <img src="{{avatarImg}}" alt="avatar">
             {{/Button}}
             <div class="message__item-avatar">
-                <img src="./icons/setting.svg" alt="setting">
+                <img src="{{settingImg}}" alt="setting">
             </div>
         </div>
     </div>
@@ -24,14 +24,14 @@
         <div class="chat__wrap-info">
             <div class="chat__wrap-name">
                 <div class="message__item-avatar">
-                    <img src="./icons/avatar.svg" alt="avatar">
+                    <img src="{{avatarImg}}" alt="avatar">
                 </div>
                 <div class="chat__wrap-name">
                     Вася
                 </div>
             </div>
             <div class="chat__wrap-setting">
-                <img src="./icons/dots.svg" alt="dots">
+                <img src="{{dotsImg}}" alt="dots">
             </div>
         </div>
         <div class="chat__wrap-list">
@@ -42,7 +42,7 @@
         </div>
         <form class="send__message" action="">
             <button type="button" class="chat__wrap-file">
-                <img src="./icons/addfile.svg" alt="file">
+                <img src="{{addFileImg}}" alt="file">
             </button>
             {{{ Input onChange=onChange }}}
             {{#if errMes}}

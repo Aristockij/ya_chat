@@ -35,7 +35,6 @@ export class SignIn extends Block {
             }
           }
         }
-        console.log(val);
         if (hasErrors) {
           return;
         }

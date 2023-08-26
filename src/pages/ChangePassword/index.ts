@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import template from './changePassword.hbs';
 import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
+import arrow from "../../icons/arrow.svg";
 
 
 export class ChangePassword extends Block {
@@ -49,7 +50,7 @@ export class ChangePassword extends Block {
 
                 console.log(val);
             },
-
+            arrowImg: arrow,
             fields: [
                 {
                     name: "oldPassword",
