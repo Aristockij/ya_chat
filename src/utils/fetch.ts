@@ -5,7 +5,7 @@ const METHODS = {
     DELETE: 'DELETE',
 };
 
-function queryStringify(data) {
+function queryStringify(data: any) {
     if (typeof data !== 'object') {
         throw new Error('Data must be object');
     }
@@ -17,24 +17,24 @@ function queryStringify(data) {
 }
 
 class HTTPTransport {
-    get = (url, options = {}) => {
+    get = (url:any, options:any, timeout:any) => {
 
-        return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+        return this.request(url, {...options, method: METHODS.GET}, timeout);
     };
 
-    post = (url, options = {}) => {
-        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+    post = (url:any, options:any, timeout:any) => {
+        return this.request(url, {...options, method: METHODS.POST}, timeout);
     };
 
-    put = (url, options = {}) => {
-        return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
+    put = (url:any, options:any, timeout:any) => {
+        return this.request(url, {...options, method: METHODS.PUT}, timeout);
     };
 
-    delete = (url, options = {}) => {
-        return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
+    delete = (url:any, options:any, timeout:any) => {
+        return this.request(url, {...options, method: METHODS.DELETE}, timeout);
     };
 
-    request = (url, options = {}, timeout = 5000) => {
+    request = (url:any, options:any, timeout = 5000) => {
         const {headers = {}, method, data} = options;
 
         return new Promise(function(resolve, reject) {

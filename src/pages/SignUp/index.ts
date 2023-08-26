@@ -11,7 +11,7 @@ export class SignUp extends Block {
     const passRegExp = /^(?=.*[A-Z])(?=.*\d).{8,40}$/i;
     const phoneRegExp = /^\+?\d{10,15}$/;
 
-    const val = {
+    const val:  Record<string, string> = {
       email:  '',
       login: '',
       first_name: '',
@@ -25,7 +25,7 @@ export class SignUp extends Block {
       onSignIn: ()=>{
         render('signIn')
       },
-      onSubmit: (e) => {
+      onSubmit: (e: MouseEvent) => {
         e.preventDefault();
         let fieldsName = this.props.fields;
         let hasErrors = false
@@ -64,11 +64,13 @@ export class SignUp extends Block {
           label: "Почта",
           ref: "emailRef",
           fieldType: "text",
-          onFocusOut: (t)=>{
-            (this.refs.emailRef as FormInput).checkMatches(t.target.value, this.refs.emailRef, mailRegExp ,"символ @ обязателен");
+          onFocusOut: (t: FocusEvent)=>{
+            const target = t.target as HTMLInputElement;
+            (this.refs.emailRef as FormInput).checkMatches(target.value, this.refs.emailRef, mailRegExp ,"символ @ обязателен");
           },
-          onChange: (event) => {
-            val.email = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.email = target.value;
           },
         },
         {
@@ -76,11 +78,13 @@ export class SignUp extends Block {
           label: "Логин",
           ref: "loginRef",
           fieldType: "text",
-          onChange: (event) => {
-            val.login = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.login = target.value;
           },
-          onFocusOut: (t)=>{
-            (this.refs.loginRef as FormInput).checkMatches(t.target.value, this.refs.loginRef, loginRegExp, "логин должен быть длиннее 3 символов и начинаться с буквы");
+          onFocusOut: (t: FocusEvent)=>{
+            const target = t.target as HTMLInputElement;
+            (this.refs.loginRef as FormInput).checkMatches(target.value, this.refs.loginRef, loginRegExp, "логин должен быть длиннее 3 символов и начинаться с буквы");
           }
         },
         {
@@ -88,11 +92,13 @@ export class SignUp extends Block {
           label: "Имя",
           ref: "first_nameRef",
           fieldType: "text",
-          onChange: (event) => {
-            val.first_name = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.first_name = target.value;
           },
-          onFocusOut: (t)=>{
-            (this.refs.first_nameRef as FormInput).checkMatches(t.target.value, this.refs.first_nameRef, nameRegExp,  "первая буква заглавная, без пробелов, цифр, спецсимволов");
+          onFocusOut: (t: FocusEvent)=>{
+            const target = t.target as HTMLInputElement;
+            (this.refs.first_nameRef as FormInput).checkMatches(target.value, this.refs.first_nameRef, nameRegExp,  "первая буква заглавная, без пробелов, цифр, спецсимволов");
           }
         },
         {
@@ -100,11 +106,13 @@ export class SignUp extends Block {
           label: "Фамилия",
           ref: "second_nameRef",
           fieldType: "text",
-          onChange: (event) => {
-            val.second_name = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.second_name = target.value;
           },
-          onFocusOut: (t)=>{
-            (this.refs.second_nameRef as FormInput).checkMatches(t.target.value, this.refs.second_nameRef, nameRegExp,"первая буква заглавная, без пробелов, цифр, спецсимволов" );
+          onFocusOut: (t: FocusEvent)=>{
+            const target = t.target as HTMLInputElement;
+            (this.refs.second_nameRef as FormInput).checkMatches(target.value, this.refs.second_nameRef, nameRegExp,"первая буква заглавная, без пробелов, цифр, спецсимволов" );
           }
         },
         {
@@ -112,11 +120,13 @@ export class SignUp extends Block {
           label: "Телефон",
           ref: "phoneRef",
           fieldType: "text",
-          onChange: (event) => {
-            val.phone = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.phone = target.value;
           },
-          onFocusOut: (t)=>{
-            (this.refs.phoneRef as FormInput).checkMatches(t.target.value, this.refs.phoneRef, phoneRegExp,"от 10 до 15 символов" );
+          onFocusOut: (t: FocusEvent)=>{
+            const target = t.target as HTMLInputElement;
+            (this.refs.phoneRef as FormInput).checkMatches(target.value, this.refs.phoneRef, phoneRegExp,"от 10 до 15 символов" );
           }
         },
         {
@@ -125,11 +135,13 @@ export class SignUp extends Block {
           ref: "passRef",
           fieldType: "password",
           showPass: true,
-          onChange: (event) => {
-            val.password = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.password = target.value;
           },
-          onFocusOut: (t)=>{
-            (this.refs.passRef as FormInput).checkMatches(t.target.value, this.refs.passRef, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+          onFocusOut: (t: FocusEvent)=>{
+            const target = t.target as HTMLInputElement;
+            (this.refs.passRef as FormInput).checkMatches(target.value, this.refs.passRef, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
           }
         },
         {
@@ -138,11 +150,13 @@ export class SignUp extends Block {
           ref: "passRefAgain",
           fieldType: "password",
           showPass: true,
-          onChange: (event) => {
-            val.password_again = event.target.value;
+          onChange: (e: FocusEvent) => {
+            const target = e.target as HTMLInputElement;
+            val.password_again = target.value;
           },
-          onFocusOut: (t)=>{
-            (this.refs.passRefAgain as FormInput).checkMatches(t.target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+          onFocusOut: (t: FocusEvent)=>{
+            const target = t.target as HTMLInputElement;
+            (this.refs.passRefAgain as FormInput).checkMatches(target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
           }
         },
       ]

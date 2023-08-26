@@ -3,15 +3,20 @@ import template from './changePassword.hbs';
 import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
 
+
 export class ChangePassword extends Block {
     constructor() {
         const passRegExp = /^(?=.*[A-Z])(?=.*\d).{8,40}$/i;
-
+        const val: Record<string, string> = {
+            oldPassword: '',
+            newPassword: '',
+            newPasswordAgain: '',
+        };
         super({
             linkChat:()=>{
                 render('profile')
             },
-            onSubmit: (e) => {
+            onSubmit: (e: MouseEvent) => {
                 e.preventDefault();
                 let fieldsName = this.props.fields;
                 let hasErrors = false
@@ -52,11 +57,13 @@ export class ChangePassword extends Block {
                     ref: "oldPass",
                     fieldType: "text",
                     showPass: true,
-                    onChange: (event) => {
-                        val.oldPassword = event.target.value;
+                    onChange: (e: FocusEvent) => {
+                        const target = e.target as HTMLInputElement;
+                        val.oldPassword = target.value;
                     },
-                    onFocusOut: (t)=>{
-                        (this.refs.oldPass as FormInput).checkMatches(t.target.value, this.refs.oldPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                    onFocusOut: (t: FocusEvent)=>{
+                        const target = t.target as HTMLInputElement;
+                        (this.refs.oldPass as FormInput).checkMatches(target.value, this.refs.oldPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
                 {
@@ -65,11 +72,13 @@ export class ChangePassword extends Block {
                     ref: "newPass",
                     fieldType: "text",
                     showPass: true,
-                    onChange: (event) => {
-                        val.newPassword = event.target.value;
+                    onChange: (e: FocusEvent) => {
+                        const target = e.target as HTMLInputElement;
+                        val.newPassword = target.value;
                     },
-                    onFocusOut: (t)=>{
-                        (this.refs.newPass as FormInput).checkMatches(t.target.value, this.refs.newPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                    onFocusOut: (t: FocusEvent)=>{
+                        const target = t.target as HTMLInputElement;
+                        (this.refs.newPass as FormInput).checkMatches(target.value, this.refs.newPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
                 {
@@ -78,21 +87,19 @@ export class ChangePassword extends Block {
                     ref: "passRefAgain",
                     fieldType: "text",
                     showPass: true,
-                    onChange: (event) => {
-                        val.newPasswordAgain = event.target.value;
+                    onChange: (e: FocusEvent) => {
+                        const target = e.target as HTMLInputElement;
+                        val.newPasswordAgain = target.value;
                     },
-                    onFocusOut: (t)=>{
-                        (this.refs.passRefAgain as FormInput).checkMatches(t.target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                    onFocusOut: (t: FocusEvent)=>{
+                        const target = t.target as HTMLInputElement;
+                        (this.refs.passRefAgain as FormInput).checkMatches(target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
             ]
         });
 
-        const val = {
-            oldPassword: '',
-            newPassword: '',
-            newPasswordAgain: '',
-        };
+
 
     }
 
