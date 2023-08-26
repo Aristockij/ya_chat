@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from './ProfileItem.hbs';
+import template from './profileItem.hbs';
 
 
 export class ProfileItem extends Block {
