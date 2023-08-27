@@ -32,7 +32,7 @@ class Block {
     this._meta = {
       props
     };
-
+    console.log(this._meta)
     this.children = children;
     this.props = this._makePropsProxy(props);
 
