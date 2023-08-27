@@ -27,6 +27,7 @@
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {
+    "stylelint-config-standard": "^34.0.0",
     "vite-plugin-checker": "^0.6.1"
   }
 }
