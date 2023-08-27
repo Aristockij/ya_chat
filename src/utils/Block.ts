@@ -99,9 +99,12 @@ class Block {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
+    console.log(newProps, oldProps)
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any) {
+    console.log(oldProps)
+    console.log(newProps)
     return true;
   }
 
