@@ -1,6 +1,6 @@
-import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import express from 'express';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -8,9 +8,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
-app.use(express.static(__dirname + '/dist/'));
+app.use(express.static(`${__dirname}/dist/`));
 
-
-app.listen(PORT, function () {
-    console.log(`Example app listening on port ${PORT}!`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`);
 });
