@@ -37,6 +37,7 @@
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {
-    "vite-plugin-checker": "^0.6.1"
+    "vite-plugin-checker": "^0.6.1",
+    "express": "^4.18.2"
   }
 }
