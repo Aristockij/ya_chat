@@ -9,6 +9,7 @@
     "prettier"
   ],
   "rules": {
+    "indent": "off",
     "max-len": [2, 500],
     "@typescript-eslint/no-unused-vars": 2,
     "no-console": "off",
