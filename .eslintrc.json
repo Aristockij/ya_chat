@@ -17,6 +17,15 @@
     "import/prefer-default-export": "off"
   },
   "settings": {
-    "import/core-modules": ["handlebars", "vite"]
+    "import/core-modules": ["handlebars", "vite"],
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
+        "moduleDirectory": ["node_modules", "src"]
+      },
+      "typescript": {
+        "directory": "tsconfig.json"
+      }
+    }
   }
 }
