@@ -67,7 +67,7 @@ export class SignUp extends Block {
           fieldType: "text",
           onFocusOut: (t: FocusEvent)=>{
             const target = t.target as HTMLInputElement;
-            (this.refs.emailRef as FormInput).checkMatches(target.value, this.refs.emailRef, mailRegExp ,"символ @ обязателен");
+            (this.refs.emailRef as FormInput).checkMatches(target.value, mailRegExp ,"символ @ обязателен");
           },
           onChange: (e: FocusEvent) => {
             const target = e.target as HTMLInputElement;
@@ -85,7 +85,7 @@ export class SignUp extends Block {
           },
           onFocusOut: (t: FocusEvent)=>{
             const target = t.target as HTMLInputElement;
-            (this.refs.loginRef as FormInput).checkMatches(target.value, this.refs.loginRef, loginRegExp, "логин должен быть длиннее 3 символов и начинаться с буквы");
+            (this.refs.loginRef as FormInput).checkMatches(target.value, loginRegExp, "логин должен быть длиннее 3 символов и начинаться с буквы");
           }
         },
         {
@@ -99,7 +99,7 @@ export class SignUp extends Block {
           },
           onFocusOut: (t: FocusEvent)=>{
             const target = t.target as HTMLInputElement;
-            (this.refs.first_nameRef as FormInput).checkMatches(target.value, this.refs.first_nameRef, nameRegExp,  "первая буква заглавная, без пробелов, цифр, спецсимволов");
+            (this.refs.first_nameRef as FormInput).checkMatches(target.value, nameRegExp,  "первая буква заглавная, без пробелов, цифр, спецсимволов");
           }
         },
         {
@@ -113,7 +113,7 @@ export class SignUp extends Block {
           },
           onFocusOut: (t: FocusEvent)=>{
             const target = t.target as HTMLInputElement;
-            (this.refs.second_nameRef as FormInput).checkMatches(target.value, this.refs.second_nameRef, nameRegExp,"первая буква заглавная, без пробелов, цифр, спецсимволов" );
+            (this.refs.second_nameRef as FormInput).checkMatches(target.value, nameRegExp,"первая буква заглавная, без пробелов, цифр, спецсимволов" );
           }
         },
         {
@@ -127,7 +127,7 @@ export class SignUp extends Block {
           },
           onFocusOut: (t: FocusEvent)=>{
             const target = t.target as HTMLInputElement;
-            (this.refs.phoneRef as FormInput).checkMatches(target.value, this.refs.phoneRef, phoneRegExp,"от 10 до 15 символов" );
+            (this.refs.phoneRef as FormInput).checkMatches(target.value, phoneRegExp,"от 10 до 15 символов" );
           }
         },
         {
@@ -142,7 +142,7 @@ export class SignUp extends Block {
           },
           onFocusOut: (t: FocusEvent)=>{
             const target = t.target as HTMLInputElement;
-            (this.refs.passRef as FormInput).checkMatches(target.value, this.refs.passRef, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+            (this.refs.passRef as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
           }
         },
         {
@@ -157,7 +157,7 @@ export class SignUp extends Block {
           },
           onFocusOut: (t: FocusEvent)=>{
             const target = t.target as HTMLInputElement;
-            (this.refs.passRefAgain as FormInput).checkMatches(target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+            (this.refs.passRefAgain as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
           }
         },
       ]

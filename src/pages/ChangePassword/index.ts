@@ -64,7 +64,7 @@ export class ChangePassword extends Block {
                     },
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
-                        (this.refs.oldPass as FormInput).checkMatches(target.value, this.refs.oldPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                        (this.refs.oldPass as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
                 {
@@ -79,7 +79,7 @@ export class ChangePassword extends Block {
                     },
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
-                        (this.refs.newPass as FormInput).checkMatches(target.value, this.refs.newPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                        (this.refs.newPass as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
                 {
@@ -94,7 +94,7 @@ export class ChangePassword extends Block {
                     },
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
-                        (this.refs.passRefAgain as FormInput).checkMatches(target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                        (this.refs.passRefAgain as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
             ]

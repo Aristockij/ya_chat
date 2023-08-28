@@ -1,4 +1,4 @@
-import Block from '../../utils/Block.ts';
+import Block from '../../utils/Block';
 import template from './button.hbs';
 
 interface ButtonProps {

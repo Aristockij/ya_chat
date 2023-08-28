@@ -54,7 +54,7 @@ export class SignIn extends Block {
           },
           onFocusOut: (t: FocusEvent) => {
             const target = t.target as HTMLInputElement;
-            (this.refs.loginRef as FormInput).checkMatches(target.value, this.refs.loginRef, loginRegExp, 'логин должен быть длиннее 3 символов и начинаться с буквы');
+            (this.refs.loginRef as FormInput).checkMatches(target.value, loginRegExp, 'логин должен быть длиннее 3 символов и начинаться с буквы');
           }
         },
         {
