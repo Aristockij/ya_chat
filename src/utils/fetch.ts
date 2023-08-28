@@ -17,8 +17,7 @@ function queryStringify(data: any) {
 }
 
 class HTTPTransport {
-    get = (url: any) => {
-
+    get = (url: any, options:any, timeout:any) => {
         return this.request(url, {...options, method: METHODS.GET}, timeout);
     };
 
@@ -37,7 +36,7 @@ class HTTPTransport {
     request = (url:any, options:any, timeout = 5000) => {
         const {headers = {}, method, data} = options;
 
-        return new Promise(function(resolve, reject) {
+        return new Promise((resolve, reject) => {
             if (!method) {
                 reject('No method');
                 return;
@@ -57,7 +56,7 @@ class HTTPTransport {
                 xhr.setRequestHeader(key, headers[key]);
             });
 
-            xhr.onload = function() {
+            xhr.onload = () => {
                 resolve(xhr);
             };
 

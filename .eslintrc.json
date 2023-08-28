@@ -22,6 +22,8 @@
     "no-param-reassign":"off",
     "prefer-arrow-callback": "off",
     "arrow-body-style": "off",
+    "prefer-promise-reject-errors": "off",
+    "import/no-duplicates": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
