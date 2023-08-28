@@ -16,9 +16,10 @@
     "no-underscore-dangle": "off",
     "import/prefer-default-export": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-use-before-define": ["error", { "variables": false }],
+    "no-use-before-define": "off",
     "class-methods-use-this": "off",
     "lines-between-class-members": "off",
+    "no-param-reassign":"off",
     "import/extensions": [
       "error",
       "ignorePackages",
