@@ -1,5 +1,5 @@
-import {EventBus} from "./EventBus";
 import {nanoid} from 'nanoid';
+import {EventBus} from "./EventBus";
 
 // Нельзя создавать экземпляр данного класса
 class Block {
@@ -32,7 +32,9 @@ class Block {
     this._meta = {
       props
     };
+
     console.log(this._meta)
+
     this.children = children;
     this.props = this._makePropsProxy(props);
 
@@ -166,6 +168,7 @@ class Block {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
+
       set(target, prop, value) {
         const oldTarget = {...target}
 

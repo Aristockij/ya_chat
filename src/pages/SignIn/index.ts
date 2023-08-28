@@ -6,15 +6,16 @@ import {FormInput} from "../../components/FormInput";
 export class SignIn extends Block {
   constructor() {
     const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
-
     const val:Record<string, string> = {
       login:  '',
       password: '',
     }
+
     super({
       onSignUp: ()=> {
         render('signUp');
       },
+
       onSubmit:(e: MouseEvent)=>{
         e.preventDefault();
         const fieldsName = this.props.fields;
@@ -66,10 +67,10 @@ export class SignIn extends Block {
           },
         },
       ],
-
     });
     (this.refs.pasRef as FormInput).setProps({showPass: true,})
   }
+
   render() {
     return this.compile(template, this.props);
   }
