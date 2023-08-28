@@ -4,6 +4,7 @@ import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
 
 export class SignUp extends Block {
+
   constructor() {
     const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
     const mailRegExp = /.+@.+\..+/i;
