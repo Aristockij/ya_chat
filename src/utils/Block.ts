@@ -18,12 +18,14 @@ class Block {
   private _element: HTMLElement | null = null;
   private _meta: { props: any; };
 
+
   /** JSDoc
    * @param {string} tagName
    * @param {Object} props
    *
    * @returns {void}
    */
+
   constructor(propsWithChildren: any = {}) {
     const eventBus: EventBus = new EventBus();
 
@@ -36,6 +38,7 @@ class Block {
     console.log(this._meta)
 
     this.children = children;
+
     this.props = this._makePropsProxy(props);
 
     this.eventBus = () => eventBus;
@@ -65,6 +68,7 @@ class Block {
 
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName]);
+
     });
   }
 
@@ -175,6 +179,7 @@ class Block {
         target[prop] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+
         return true;
       },
       deleteProperty() {

@@ -17,6 +17,7 @@
     "import/prefer-default-export": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-use-before-define": ["error", { "variables": false }],
+    "class-methods-use-this": ["error", { "enforceForClassFields": false }],
     "import/extensions": [
       "error",
       "ignorePackages",
