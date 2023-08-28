@@ -6,7 +6,7 @@ import HTTPTransport from '../../utils/fetch';
 
 
 const transport = new HTTPTransport();
-transport.get('http://localhost:3000').then(response => {
+transport.get('http://localhost:3000',"GET" ,3000 ).then(response => {
   console.log(response);
 }).catch(error => {
   console.error(error);
