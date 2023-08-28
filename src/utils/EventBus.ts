@@ -24,7 +24,7 @@ export class EventBus {
       throw new Event(`Нет события: ${event}`);
     }
 
-    this.listeners[event].forEach(function (listener: (...args:unknown[])=>void){
+    this.listeners[event].forEach((listener: (...args:unknown[]) => void) => {
       listener(...args)
     })
   }
