@@ -1,7 +1,13 @@
 {
-  "extends": ["airbnb-base"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
   "rules": {
     "max-len": [2, 500],
     "@typescript-eslint/no-unused-vars": 2,

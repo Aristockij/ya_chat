@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../utils/Block.ts';
 import template from './formInput.hbs';
 
 interface FormInputProps {
@@ -39,7 +39,7 @@ export class FormInput extends Block {
     }
 
 
-    checkMatches(val:string, ref: BlockInterface, reg: any, mes:string) {
+    checkMatches(val: string, ref: BlockInterface, reg: any, mes: string) {
         if (!reg.test(val)) {
             ref.setProps({
                 fieldValue: val,
