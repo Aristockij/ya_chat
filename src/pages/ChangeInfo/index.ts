@@ -17,24 +17,22 @@ export class ChangeInfo extends Block {
             },
             onSubmit: (e: MouseEvent) => {
                 e.preventDefault();
-                let fieldsName = this.props.fields;
+                const fieldsName = this.props.fields;
                 let hasErrors = false
 
-                for(let i = 0;  i < fieldsName.length; i++ ){
-                    for (let key in val){
-                        let nameRef = this.props.fields[i].ref;
+                for (let i = 0; i < fieldsName.length; i++) {
+                    const nameRef = this.props.fields[i].ref;
+                    const fieldName = fieldsName[i].name;
 
-                        if(key === fieldsName[i].name && val[key]?.length === 0 ){
-
-                            this.refs[nameRef].setProps({
-                                errorMessage: 'пустое поле',
-                                req: true,
-                            })
-
-                            hasErrors = true;
-                        }
+                    if (!val[fieldName]?.length) {
+                        this.refs[nameRef].setProps({
+                            errorMessage: 'пустое поле',
+                            req: true,
+                        });
+                        hasErrors = true;
                     }
                 }
+
                 if (hasErrors) {
                     console.log(val);
                     return;
