@@ -17,7 +17,7 @@ function queryStringify(data: any) {
 }
 
 class HTTPTransport {
-    get = (url:any, options:any, timeout:any) => {
+    get = (url: any) => {
 
         return this.request(url, {...options, method: METHODS.GET}, timeout);
     };

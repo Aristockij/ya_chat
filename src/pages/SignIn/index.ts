@@ -1,7 +1,18 @@
 import Block from '../../utils/Block';
+import HTTPTransport from '../../utils/fetch';
 import template from './signIn.hbs';
 import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
+
+
+
+const transport = new HTTPTransport();
+
+transport.get('http://localhost:3000').then(response => {
+  console.log(response);
+}).catch(error => {
+  console.error(error);
+});
 
 export class SignIn extends Block {
   constructor() {
