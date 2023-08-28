@@ -26,6 +26,11 @@
       }
     ]
   },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
   "settings": {
     "import/core-modules": ["handlebars", "vite"],
     "import/resolver": {

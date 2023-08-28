@@ -8,6 +8,7 @@ export class ProfileAvatar extends Block {
             avatarImg: avatar
         });
     }
+
     render() {
         return this.compile(template, this.props);
     }
