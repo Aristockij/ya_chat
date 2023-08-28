@@ -4,7 +4,10 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "max-len": [2, 500],
-    "@typescript-eslint/no-unused-vars": 2
+    "@typescript-eslint/no-unused-vars": 2,
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off"
   },
   "settings": {
     "import/core-modules": ["handlebars", "vite"]

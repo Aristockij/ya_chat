@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../utils/Block.ts';
 import template from './button.hbs';
 
 interface ButtonProps {
@@ -17,8 +17,8 @@ export class Button extends Block {
       ...props,
       typeDiv: false,
       events: {
-        click: props.onClick
-      }
+        click: props.onClick,
+      },
     });
   }
 
