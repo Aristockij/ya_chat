@@ -1,8 +1,8 @@
 import {nanoid} from 'nanoid';
 import {EventBus} from "./EventBus";
 
-// Нельзя создавать экземпляр данного класса
-class Block {
+
+class Block  {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -11,12 +11,12 @@ class Block {
   };
 
   public id = nanoid(6);
-  protected props: any;
+  public props: Record<string, unknown>;
   protected refs: Record<string, Block> = {};
   public children: Record<string, Block>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
-  private _meta: { props: any; };
+  protected _meta: { props };
 
 
   /** JSDoc
@@ -44,6 +44,7 @@ class Block {
     this.eventBus = () => eventBus;
 
     this._registerEvents(eventBus);
+    this._removeEvents(eventBus);
 
     eventBus.emit(Block.EVENTS.INIT);
   }
@@ -77,6 +78,12 @@ class Block {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+  }
+  _removeEvents(eventBus: EventBus) {
+    eventBus.off(Block.EVENTS.INIT, this._init.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
   private _init() {
