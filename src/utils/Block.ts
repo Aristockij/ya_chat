@@ -2,7 +2,7 @@ import {nanoid} from 'nanoid';
 import {EventBus} from "./EventBus";
 
 
-class Block<P extends Record<string, any> = unknown> {
+class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -16,8 +16,6 @@ class Block<P extends Record<string, any> = unknown> {
   public children: Record<string, Block>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
-
-
 
   /** JSDoc
    * @param {string} tagName
@@ -60,11 +58,10 @@ class Block<P extends Record<string, any> = unknown> {
   }
 
   _addEvents() {
-    const {events = {}} = this.props as { events: Record<string, () => void> };
+    const events = (this.props.events || {}) as Record<string, (...args: any[]) => void>
 
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName]);
-
     });
   }
 
