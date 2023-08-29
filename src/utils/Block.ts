@@ -2,7 +2,7 @@ import {nanoid} from 'nanoid';
 import {EventBus} from "./EventBus";
 
 
-class Block  {
+class Block<P extends Record<string, any> = unknown> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -11,12 +11,12 @@ class Block  {
   };
 
   public id = nanoid(6);
-  public props: Record<string, unknown>;
+  public props: P;
   protected refs: Record<string, Block> = {};
   public children: Record<string, Block>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
-  protected _meta: { props };
+
 
 
   /** JSDoc
@@ -31,11 +31,6 @@ class Block  {
 
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
-    this._meta = {
-      props
-    };
-
-    console.log(this._meta)
 
     this.children = children;
 
