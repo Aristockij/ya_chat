@@ -26,18 +26,12 @@ class Block<P extends Record<string, any> = any> {
 
   constructor(propsWithChildren: any = {}) {
     const eventBus: EventBus = new EventBus();
-
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
-
     this.children = children;
-
     this.props = this._makePropsProxy(props);
-
     this.eventBus = () => eventBus;
-
     this._registerEvents(eventBus);
-    this._removeEvents(eventBus);
 
     eventBus.emit(Block.EVENTS.INIT);
   }
@@ -65,18 +59,21 @@ class Block<P extends Record<string, any> = any> {
     });
   }
 
+  _removeEvents() {
+    const events = (this.props.events || {}) as Record<string, (...args: any[]) => void>
+
+    Object.keys(events).forEach(eventName => {
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
-  _removeEvents(eventBus: EventBus) {
-    eventBus.off(Block.EVENTS.INIT, this._init.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-  }
+
 
   private _init() {
     this.init();
@@ -137,6 +134,7 @@ class Block<P extends Record<string, any> = any> {
     this._element = newElement;
 
     this._addEvents();
+    this._removeEvents();
   }
 
   protected compile(template: (context: any) => string, context: any) {
