@@ -1,8 +1,8 @@
-import {EventBus} from "./EventBus";
 import {nanoid} from 'nanoid';
+import {EventBus} from "./EventBus";
 
-// Нельзя создавать экземпляр данного класса
-class Block {
+
+class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -11,12 +11,11 @@ class Block {
   };
 
   public id = nanoid(6);
-  protected props: any;
+  public props: P;
   protected refs: Record<string, Block> = {};
   public children: Record<string, Block>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
-  private _meta: { props: any; };
 
   /** JSDoc
    * @param {string} tagName
@@ -24,20 +23,14 @@ class Block {
    *
    * @returns {void}
    */
+
   constructor(propsWithChildren: any = {}) {
     const eventBus: EventBus = new EventBus();
-
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
-    this._meta = {
-      props
-    };
-    console.log(this._meta)
     this.children = children;
     this.props = this._makePropsProxy(props);
-
     this.eventBus = () => eventBus;
-
     this._registerEvents(eventBus);
 
     eventBus.emit(Block.EVENTS.INIT);
@@ -59,10 +52,18 @@ class Block {
   }
 
   _addEvents() {
-    const {events = {}} = this.props as { events: Record<string, () => void> };
+    const events = (this.props.events || {}) as Record<string, (...args: any[]) => void>
 
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName]);
+    });
+  }
+
+  _removeEvents() {
+    const events = (this.props.events || {}) as Record<string, (...args: any[]) => void>
+
+    Object.keys(events).forEach(eventName => {
+      this._element?.removeEventListener(eventName, events[eventName]);
     });
   }
 
@@ -72,6 +73,7 @@ class Block {
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
+
 
   private _init() {
     this.init();
@@ -132,6 +134,7 @@ class Block {
     this._element = newElement;
 
     this._addEvents();
+    this._removeEvents();
   }
 
   protected compile(template: (context: any) => string, context: any) {
@@ -166,12 +169,14 @@ class Block {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
+
       set(target, prop, value) {
         const oldTarget = {...target}
 
         target[prop] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+
         return true;
       },
       deleteProperty() {

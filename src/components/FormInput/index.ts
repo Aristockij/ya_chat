@@ -17,10 +17,6 @@ interface FormInputProps {
     };
 }
 
-interface BlockInterface {
-    setProps(props: any): void;
-}
-
 export class FormInput extends Block {
     constructor(props: FormInputProps) {
         super({
@@ -39,16 +35,16 @@ export class FormInput extends Block {
     }
 
 
-    checkMatches(val:string, ref: BlockInterface, reg: any, mes:string) {
+    checkMatches(val: string, reg: any, mes: string) {
         if (!reg.test(val)) {
-            ref.setProps({
+            this.setProps({
                 fieldValue: val,
                 errorMessage: mes,
                 req: true,
             })
             console.log(val)
         } else {
-            ref.setProps({
+            this.setProps({
                 fieldValue: val,
                 req: false
             })

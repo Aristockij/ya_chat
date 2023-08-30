@@ -19,13 +19,13 @@ export class EventBus {
     );
   }
 
-  emit(event:string, ...args: unknown[]) {
+  emit(event:string, ...eventArgs: unknown[]) {
     if (!this.listeners[event]) {
       throw new Event(`Нет события: ${event}`);
     }
 
-    this.listeners[event].forEach(function (listener: (...args:unknown[])=>void){
-      listener(...args)
+    this.listeners[event].forEach((listener: (...args:unknown[]) => void) => {
+      listener(...eventArgs)
     })
   }
 }

@@ -17,8 +17,8 @@ export class Button extends Block {
       ...props,
       typeDiv: false,
       events: {
-        click: props.onClick
-      }
+        click: props.onClick,
+      },
     });
   }
 

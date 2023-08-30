@@ -16,7 +16,22 @@
     "skipLibCheck": true,
     "noImplicitAny": true,
     "sourceMap": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": "./",
+    "paths": {
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
+        "moduleDirectory": ["node_modules", "src"]
+      },
+      "typescript": {
+        "directory": "tsconfig.json"
+      }
+    }
   },
   "include": [
     "src",

@@ -19,22 +19,19 @@ export class ChangePassword extends Block {
             },
             onSubmit: (e: MouseEvent) => {
                 e.preventDefault();
-                let fieldsName = this.props.fields;
+                const fieldsName = this.props.fields;
                 let hasErrors = false
 
                 for(let i = 0;  i < fieldsName.length; i++ ){
-                    for (let key in val){
-                        let nameRef = this.props.fields[i].ref;
+                    const nameRef = this.props.fields[i].ref;
+                    const fieldName = fieldsName[i].name;
 
-                        if(key === fieldsName[i].name && val[key].length === 0 ){
-
-                            this.refs[nameRef].setProps({
-                                errorMessage: 'пустое поле',
-                                req: true,
-                            })
-
-                            hasErrors = true;
-                        }
+                    if (!val[fieldName]?.length) {
+                        this.refs[nameRef].setProps({
+                            errorMessage: 'пустое поле',
+                            req: true,
+                        });
+                        hasErrors = true;
                     }
                 }
                 if(val.newPassword !== val.newPasswordAgain){
@@ -64,7 +61,7 @@ export class ChangePassword extends Block {
                     },
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
-                        (this.refs.oldPass as FormInput).checkMatches(target.value, this.refs.oldPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                        (this.refs.oldPass as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
                 {
@@ -79,7 +76,7 @@ export class ChangePassword extends Block {
                     },
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
-                        (this.refs.newPass as FormInput).checkMatches(target.value, this.refs.newPass, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                        (this.refs.newPass as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
                 {
@@ -94,7 +91,7 @@ export class ChangePassword extends Block {
                     },
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
-                        (this.refs.passRefAgain as FormInput).checkMatches(target.value, this.refs.passRefAgain, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
+                        (this.refs.passRefAgain as FormInput).checkMatches(target.value, passRegExp,"от 8 до 40 символов, хотя бы одна заглавная буква и цифра." );
                     }
                 },
             ]
