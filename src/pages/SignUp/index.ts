@@ -1,7 +1,7 @@
 import Block from '../../utils/Block';
 import template from './signUp.hbs';
-import {render} from "../../utils/render";
-import {FormInput} from "../../components/FormInput";
+import { FormInput } from "../../components/FormInput";
+import { Link } from "../../components/Link";
 
 export class SignUp extends Block {
 
@@ -23,9 +23,6 @@ export class SignUp extends Block {
     }
 
     super({
-      onSignIn: ()=>{
-        render('signIn')
-      },
       onSubmit: (e: MouseEvent) => {
         e.preventDefault();
         const fieldsName = this.props.fields;
@@ -160,7 +157,12 @@ export class SignUp extends Block {
       ]
     });
   }
-
+  init() {
+    this.children.link = new Link({
+      label: 'Войти',
+      to: '/'
+    });
+  }
   render() {
     return this.compile(template, this.props);
   }

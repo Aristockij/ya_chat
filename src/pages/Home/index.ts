@@ -1,6 +1,8 @@
 import Block from '../../utils/Block';
 import template from './home.hbs';
-import {render} from "../../utils/render";
+// import {render} from "../../utils/render";
+import router from '../../utils/Router';
+import { Link } from '../../components/Link';
 
 
 export class HomePage extends Block {
@@ -9,51 +11,35 @@ export class HomePage extends Block {
       buttons: [
         {
           label: 'Вход',
-          onClick: () => {
-            render('signIn');
-          }
+          to: '/signIn',
         },
         {
           label: 'Регистрация',
-          onClick: () => {
-            render('signUp');
-          }
+          to: '/signUp',
         },
         {
           label: 'Чат',
-          onClick: () => {
-            render('chat');
-          }
+          to: '/chat',
         },
         {
           label: 'Профиль',
-          onClick: () => {
-            render('profile');
-          }
+          to: '/profile',
         },
         {
           label: 'Изменить данные',
-          onClick: () => {
-            render('changeInfo');
-          }
+          to: '/changeInfo',
         },
         {
           label: 'Изменить пароль',
-          onClick: () => {
-            render('changePassword');
-          }
+          to: '/changePassword',
         },
         {
           label: '5**',
-          onClick: () => {
-            render('page500');
-          }
+          to: '/page500',
         },
         {
           label: '404',
-          onClick: () => {
-            render('page404');
-          }
+          to: '/page404',
         },
       ]
     });

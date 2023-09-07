@@ -1,16 +1,16 @@
 import Block from '../../utils/Block';
 import template from './signIn.hbs';
-import {render} from "../../utils/render";
+// import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
-import HTTPTransport from '../../utils/fetch';
+import HTTPTransport from '@utils/HTTPTransport';
 
 
-const transport = new HTTPTransport();
-transport.get('http://localhost:3000',"GET" ,3000 ).then(response => {
-  console.log(response);
-}).catch(error => {
-  console.error(error);
-});
+// const transport = new HTTPTransport();
+// transport.get('http://localhost:5173',"GET" ,3000 ).then(response => {
+//   console.log(response);
+// }).catch(error => {
+//   console.error(error);
+// });
 
 export class SignIn extends Block {
   constructor() {
@@ -22,7 +22,7 @@ export class SignIn extends Block {
 
     super({
       onSignUp: ()=> {
-        render('signUp');
+        // render('signUp');
       },
 
       onSubmit:(e: MouseEvent)=>{
