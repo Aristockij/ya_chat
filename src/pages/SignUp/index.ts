@@ -2,6 +2,8 @@ import Block from '../../utils/Block';
 import template from './signUp.hbs';
 import { FormInput } from "../../components/FormInput";
 import { Link } from "../../components/Link";
+import AuthController from "../../controllers/AuthController";
+import {SignupData} from "../../api/AuthAPI";
 
 export class SignUp extends Block {
 
@@ -23,6 +25,9 @@ export class SignUp extends Block {
     }
 
     super({
+      logOut: ()=> {
+        AuthController.logout()
+      },
       onSubmit: (e: MouseEvent) => {
         e.preventDefault();
         const fieldsName = this.props.fields;
@@ -50,7 +55,7 @@ export class SignUp extends Block {
         if (hasErrors || val.password !== val.password_again ) {
           return;
         }
-
+        AuthController.signup(val as SignupData)
         console.log(val);
       },
       fields: [

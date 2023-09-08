@@ -3,6 +3,8 @@ import template from './signIn.hbs';
 // import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
 import HTTPTransport from '@utils/HTTPTransport';
+import AuthController from "../../controllers/AuthController";
+import { SigninData } from '../../api/AuthAPI';
 
 
 // const transport = new HTTPTransport();
@@ -11,6 +13,11 @@ import HTTPTransport from '@utils/HTTPTransport';
 // }).catch(error => {
 //   console.error(error);
 // });
+
+export interface SignInVal {
+  login: string;
+  password: string;
+}
 
 export class SignIn extends Block {
   constructor() {
@@ -45,7 +52,8 @@ export class SignIn extends Block {
         if (hasErrors) {
           return;
         }
-        console.log(val);
+
+        AuthController.signin(val as SigninData);
       },
       fields: [
         {

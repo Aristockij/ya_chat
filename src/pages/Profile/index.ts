@@ -1,6 +1,5 @@
 import Block from '../../utils/Block';
 import template from './profile.hbs';
-import {render} from "../../utils/render";
 import arrow from "../../icons/arrow.svg";
 
 
@@ -8,13 +7,13 @@ export class Profile extends Block {
     constructor() {
         super({
             linkChat: ()=>{
-                render('chat')
+                // render('chat')
             },
             linkChangeInfo: ()=>{
-                render('changeInfo')
+                // render('changeInfo')
             },
             linkChangePassword: ()=>{
-                render('changePassword')
+                // render('changePassword')
             },
             arrowImg: arrow,
             items:[

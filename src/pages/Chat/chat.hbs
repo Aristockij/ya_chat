@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="profile__links">
-            {{#Button onClick=linkProfile className="message__item-avatar" buttonType="button" }}
+            {{#Link to="/profile" className="message__item-avatar"}}
                 <img src="{{avatarImg}}" alt="avatar">
-            {{/Button}}
+            {{/Link}}
             <div class="message__item-avatar">
                 <img src="{{settingImg}}" alt="setting">
             </div>

@@ -32,10 +32,10 @@ registerComponent('ProfileItem', ProfileItem);
 
 enum Routes {
   Index = '/',
-  SignIn = '/signIn',
-  SignUp = '/signUp',
-  // Profile = '/profile',
-  // Chat = '/chat',
+  SignIn = '/sign-in',
+  SignUp = '/sign-up',
+  Profile = '/profile',
+  Chat = '/chat',
   // ChangeInfo = '/changeInfo',
   // ChangePassword = '/changePassword',
 
@@ -46,8 +46,8 @@ window.addEventListener('DOMContentLoaded', async () => {
       .use(Routes.Index, HomePage)
       .use(Routes.SignIn, SignIn)
       .use(Routes.SignUp, SignUp)
-      // .use(Routes.Profile, Profile)
-      // .use(Routes.Chat, Chat)
+      .use(Routes.Profile, Profile)
+      .use(Routes.Chat, Chat)
       // .use(Routes.ChangeInfo, ChangeInfo)
       // .use(Routes.ChangePassword, ChangePassword)
 

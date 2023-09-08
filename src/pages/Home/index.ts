@@ -11,11 +11,11 @@ export class HomePage extends Block {
       buttons: [
         {
           label: 'Вход',
-          to: '/signIn',
+          to: '/sign-in',
         },
         {
           label: 'Регистрация',
-          to: '/signUp',
+          to: '/sign-up',
         },
         {
           label: 'Чат',

@@ -1,6 +1,6 @@
 import Block from '../../utils/Block';
 import template from './chat.hbs';
-import {render} from "../../utils/render";
+// import {render} from "../../utils/render";
 import avatar from "../../icons/avatar.svg";
 import setting from "../../icons/setting.svg";
 import addFile from "../../icons/addfile.svg";
@@ -16,9 +16,6 @@ export class Chat extends Block {
             message: '',
         }
         super({
-            linkProfile: ()=>{
-             render('profile')
-            },
             onSubmit: (e: MouseEvent)=>{
                 e.preventDefault();
                 if(val.message.length === 0 ){
