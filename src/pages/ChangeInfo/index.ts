@@ -6,6 +6,7 @@ import store, {withStore} from "../../utils/Store";
 import MutateController from "../../controllers/MutateController";
 import {UserData} from "../../api/UserAPI";
 import avatar from "../../icons/avatar.svg";
+import AuthController from "../../controllers/AuthController";
 
 export class ChangeInfo extends Block {
     constructor() {
@@ -50,10 +51,12 @@ export class ChangeInfo extends Block {
             uploadAvatar: (e)=>{
                 const fileInput = e.target;
                 const selectedFile = fileInput.files[0];
-                const formData: FormData = new FormData()
-                let avatar = formData.append('avatar', selectedFile);
 
-                MutateController.mutateAvatar(avatar);
+                MutateController.mutateAvatar(selectedFile);
+
+                AuthController.fetchUser();
+                console.log(store.getState())
+                // this.refs.avatarRef.setProps({avatarImg: `https://ya-praktikum.tech/api/v2/resources/${ava}` });
             },
             fields: [
                 {
@@ -162,10 +165,11 @@ export class ChangeInfo extends Block {
                 val[tagName] = store.getState().user[tagName]
             }
         }))
-        this.refs.avatarRef.setProps({profileName: store.getState().user.first_name })
-        this.refs.avatarRef.setProps({avatarImg: store.getState().user.avatar})
 
-        console.log(store.getState().user)
+        this.refs.avatarRef.setProps({profileName: store.getState().user.first_name });
+        let ava = store.getState().user.avatar;
+
+        this.refs.avatarRef.setProps({avatarImg: `https://ya-praktikum.tech/api/v2/resources/${ava}` });
     }
     render() {
         return this.compile(template, this.props);

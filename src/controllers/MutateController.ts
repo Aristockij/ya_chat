@@ -20,14 +20,14 @@ export class MutateController {
             console.error(e.message);
         }
     }
-    async mutateAvatar(data: FormData) {
+    async mutateAvatar(data: any) {
         try {
-            await this.api.mutateAvatar(data);
+            const file: FormData = new FormData();
+            file.append('avatar', data);
 
-            store.set('user', data);
-            console.log(data)
+            await this.api.mutateAvatar(file);
         } catch (e: any) {
-            console.error(e.message);
+            console.error(e);
         }
     }
 
@@ -37,7 +37,7 @@ export class MutateController {
 
             router.go('/profile');
         } catch (e: any) {
-            console.error(e.message);
+            console.error(e);
         }
     }
 }
