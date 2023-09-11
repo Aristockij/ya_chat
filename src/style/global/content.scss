@@ -307,7 +307,7 @@
       transition: .4s;
       width: 100%;
       text-align: left;
-
+      cursor: pointer;
       &:hover{
         opacity: .5;
       }
@@ -320,6 +320,7 @@
   position: absolute;
   top: 50px;
   left: 50px;
+  cursor: pointer;
 }
 
 .error__message{

@@ -25,9 +25,6 @@ export class SignUp extends Block {
     }
 
     super({
-      logOut: ()=> {
-        AuthController.logout()
-      },
       onSubmit: (e: MouseEvent) => {
         e.preventDefault();
         const fieldsName = this.props.fields;
@@ -160,12 +157,6 @@ export class SignUp extends Block {
           }
         },
       ]
-    });
-  }
-  init() {
-    this.children.link = new Link({
-      label: 'Войти',
-      to: '/'
     });
   }
   render() {

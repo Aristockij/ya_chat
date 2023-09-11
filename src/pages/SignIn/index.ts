@@ -1,18 +1,9 @@
 import Block from '../../utils/Block';
 import template from './signIn.hbs';
-// import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
-import HTTPTransport from '@utils/HTTPTransport';
 import AuthController from "../../controllers/AuthController";
 import { SigninData } from '../../api/AuthAPI';
 
-
-// const transport = new HTTPTransport();
-// transport.get('http://localhost:5173',"GET" ,3000 ).then(response => {
-//   console.log(response);
-// }).catch(error => {
-//   console.error(error);
-// });
 
 export interface SignInVal {
   login: string;

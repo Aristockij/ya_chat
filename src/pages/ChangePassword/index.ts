@@ -1,8 +1,9 @@
 import Block from '../../utils/Block';
 import template from './changePassword.hbs';
-import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
 import arrow from "../../icons/arrow.svg";
+import MutateController from "../../controllers/MutateController";
+import {UserData, UserPassword} from "../../api/UserAPI";
 
 
 export class ChangePassword extends Block {
@@ -14,9 +15,6 @@ export class ChangePassword extends Block {
             newPasswordAgain: '',
         };
         super({
-            linkChat:()=>{
-                render('profile')
-            },
             onSubmit: (e: MouseEvent) => {
                 e.preventDefault();
                 const fieldsName = this.props.fields;
@@ -44,8 +42,15 @@ export class ChangePassword extends Block {
                 if (hasErrors || val.newPassword !== val.newPasswordAgain ) {
                     return;
                 }
+                let dataValue: Record<string, string> = {};
 
-                console.log(val);
+                const keysToCopy = Object.keys(val).slice(0, 2);
+
+                keysToCopy.forEach((key) => {
+                    dataValue[key] = val[key];
+                });
+
+                MutateController.mutatePassword(dataValue as UserPassword)
             },
             arrowImg: arrow,
             fields: [

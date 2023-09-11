@@ -20,5 +20,5 @@ netlify: https://main--fancy-pegasus-8f8a97.netlify.app/
 ссылка на макет: 
 
 тестовый профиль:
-логин: QwerZed21
-пароль: QwerZed21
+логин: QwerZed
+пароль: QwerZed212

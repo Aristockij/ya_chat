@@ -40,30 +40,20 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
 
         return class WithStore extends Component {
 
-            private onStoreUpdate: ()=> void;
-
             constructor(props: Omit<P, keyof SP>) {
                 let previousState = mapStateToProps(store.getState());
 
                 super({ ...(props as P), ...previousState });
 
-                this.onStoreUpdate = ()=> {
+                store.on(StoreEvents.Updated, () => {
                     const stateProps = mapStateToProps(store.getState());
 
                     previousState = stateProps;
 
                     this.setProps({ ...stateProps });
-                }
-
-                store.on(StoreEvents.Updated, this.onStoreUpdate);
+                });
             }
-
-            componentWillUnmount(){
-                store.off(StoreEvents.Updated, this.onStoreUpdate);
-            }
-
         }
-
     }
 }
 

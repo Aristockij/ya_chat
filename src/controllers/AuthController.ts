@@ -16,7 +16,7 @@ export class AuthController {
 
       await this.fetchUser();
 
-      router.go('/chat');
+      router.go('/profile');
     } catch (e: any) {
       console.error(e.message);
     }
@@ -43,15 +43,13 @@ export class AuthController {
     }
   }
 
-
-
   async logout() {
     try {
       // MessagesController.cloxseAll();
 
       await this.api.logout();
 
-      router.go('/signIn');
+      router.go('/sign-in');
     } catch (e: any) {
       console.error(e.message);
     }

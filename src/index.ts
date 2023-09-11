@@ -13,9 +13,10 @@ import Router from './utils/Router';
 import {HomePage} from "./pages/Home";
 import {SignIn} from "./pages/SignIn";
 import {SignUp} from "./pages/SignUp";
-import {Profile} from "./pages/Profile";
+import {ProfilePage} from "./pages/Profile";
+import {ChangeInfoPage} from "./pages/ChangeInfo";
 import {Chat} from "./pages/Chat";
-import {ChangeInfo} from "./pages/ChangeInfo";
+import AuthController from './controllers/AuthController';
 import {ChangePassword} from "./pages/ChangePassword";
 
 registerComponent('Button', Button);
@@ -36,8 +37,8 @@ enum Routes {
   SignUp = '/sign-up',
   Profile = '/profile',
   Chat = '/chat',
-  // ChangeInfo = '/changeInfo',
-  // ChangePassword = '/changePassword',
+  ChangeInfo = '/changeInfo',
+  ChangePassword = '/changePassword',
 
 }
 
@@ -46,28 +47,28 @@ window.addEventListener('DOMContentLoaded', async () => {
       .use(Routes.Index, HomePage)
       .use(Routes.SignIn, SignIn)
       .use(Routes.SignUp, SignUp)
-      .use(Routes.Profile, Profile)
+      .use(Routes.Profile, ProfilePage)
       .use(Routes.Chat, Chat)
-      // .use(Routes.ChangeInfo, ChangeInfo)
-      // .use(Routes.ChangePassword, ChangePassword)
+      .use(Routes.ChangeInfo, ChangeInfoPage)
+      .use(Routes.ChangePassword, ChangePassword)
 
   let isProtectedRoute = true;
 
   switch (window.location.pathname) {
     case Routes.Index:
-    // case Routes.Register:
-    //   isProtectedRoute = false;
+    case Routes.SignUp:
+      isProtectedRoute = false;
       break;
   }
 
   try {
-    // await AuthController.fetchUser();
+    await AuthController.fetchUser();
 
     Router.start();
-    //
-    // if (!isProtectedRoute) {
-    //   Router.go(Routes.Profile)
-    // }
+
+    if (!isProtectedRoute) {
+      Router.go(Routes.Profile)
+    }
   } catch (e) {
     Router.start();
 

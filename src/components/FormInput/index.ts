@@ -42,7 +42,6 @@ export class FormInput extends Block {
                 errorMessage: mes,
                 req: true,
             })
-            console.log(val)
         } else {
             this.setProps({
                 fieldValue: val,

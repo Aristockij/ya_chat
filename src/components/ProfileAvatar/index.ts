@@ -3,9 +3,9 @@ import template from './profileAvatar.hbs';
 import avatar from '../../icons/avatar.svg';
 
 export class ProfileAvatar extends Block {
-    constructor() {
+    constructor(props: any) {
         super({
-            avatarImg: avatar
+            ...props,
         });
     }
 
