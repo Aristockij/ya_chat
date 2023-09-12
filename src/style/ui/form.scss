@@ -36,25 +36,6 @@
   font-size: 13px;
 }
 
-.form__search label{
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  &::before{
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    z-index: 1;
-    top: 6px;
-    right: 10px;
-    background: url("../../../public/icons/search.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-  }
-}
-
 .sign__input input:focus + label,
 .sign__input input:valid + label{
   top: -15px;
@@ -125,12 +106,17 @@
     position: relative;
 
   }
-}
 
-
-.form__search input:focus + label,
-.form__search input:valid + label{
-   opacity: 0;
+  &-btn{
+    background: $blue;
+    color: $white;
+    height: 36px;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 

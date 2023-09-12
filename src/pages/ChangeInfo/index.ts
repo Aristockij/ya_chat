@@ -6,7 +6,6 @@ import store, {withStore} from "../../utils/Store";
 import MutateController from "../../controllers/MutateController";
 import {UserData} from "../../api/UserAPI";
 import avatar from "../../icons/avatar.svg";
-import AuthController from "../../controllers/AuthController";
 
 export class ChangeInfo extends Block {
     constructor() {
@@ -53,10 +52,8 @@ export class ChangeInfo extends Block {
                 const selectedFile = fileInput.files[0];
 
                 MutateController.mutateAvatar(selectedFile);
-
-                AuthController.fetchUser();
-                console.log(store.getState())
-                // this.refs.avatarRef.setProps({avatarImg: `https://ya-praktikum.tech/api/v2/resources/${ava}` });
+                console.log(this.refs.avatarRef)
+                this.refs.avatarRef.setProps({avatarImg: `https://ya-praktikum.tech/api/v2/resources/${ava}` });
             },
             fields: [
                 {

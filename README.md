@@ -22,3 +22,7 @@ netlify: https://main--fancy-pegasus-8f8a97.netlify.app/
 тестовый профиль:
 логин: QwerZed
 пароль: QwerZed212
+
+второй тестовый профиль:
+логин: ZedWer
+пароль: ZedWer21
