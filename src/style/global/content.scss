@@ -51,8 +51,20 @@
     overflow: auto;
   }
 
+  &-unselected{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
   &-messages{
     width: 100%;
+    position: relative;
+  }
+
+  &-file{
+    cursor: pointer;
   }
 
   &-info{
@@ -60,6 +72,7 @@
     padding: 10px 0;
     margin:  0 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: calc(100% - 20px);
     border-bottom: 1px solid $grey1;
@@ -72,10 +85,56 @@
     cursor: pointer;
   }
 
+  &-modal{
+    position: absolute;
+    border-radius: 5px;
+    border: 1px solid $black;
+    right: 10px;
+    width: 150px;
+    bottom: -70px;
+    padding: 10px;
+    z-index: 2;
+    background: $white;
+    &>button{
+      text-align: left;
+      color: red;
+    }
+  }
+
+  &-download{
+    margin-bottom: 5px;
+    cursor: pointer;
+    &:hover label{
+      color: $blue;
+    }
+    input{
+      display: none;
+    }
+    label{
+      font-size: 14px;
+      line-height: 1;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+
   &-name{
     display: flex;
     align-items: center;
     justify-content: flex-start;
+  }
+
+  &-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-search{
+    border: none;
+    width: 300px;
+    margin: 0 150px 0 0;
+    padding: 0;
   }
 }
 
@@ -124,6 +183,7 @@
     min-width: 40px;
     height: 40px;
     border-radius: 50%;
+    overflow: hidden;
     background: $white;
     position: relative;
     display: flex;

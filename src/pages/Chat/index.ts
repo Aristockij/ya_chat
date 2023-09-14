@@ -1,54 +1,73 @@
 import Block from '../../utils/Block';
 import template from './chat.hbs';
-// import {render} from "../../utils/render";
 import avatar from "../../icons/avatar.svg";
 import setting from "../../icons/setting.svg";
-import addFile from "../../icons/addfile.svg";
 import dots from "../../icons/dots.svg";
+import ChatsController from "../../controllers/ChatsController";
+import store, {withStore} from "../../utils/Store";
 
-interface FieldValues {
-    message: string;
+
+interface LoginValues {
+    login: string;
 }
 
-export class Chat extends Block {
-    constructor() {
-        const val: FieldValues = {
-            message: '',
+class Chat extends Block {
+    constructor(props) {
+
+        let login: LoginValues={
+            login: '',
         }
         super({
             onSubmit: (e: MouseEvent)=>{
                 e.preventDefault();
-                if(val.message.length === 0 ){
-                  this.props.errMes = true;
-                  console.log('пустое поле');
-                  return;
-                }
-                this.props.errMes = false;
-                console.log(val)
-                val.message = ''
             },
-            onChange: (e: FocusEvent) => {
+            searchUser:(e: FocusEvent)=>{
                 const target = e.target as HTMLInputElement;
-                val.message = target.value;
+                login.login = target.value;
             },
+            sendMessage: (e: FocusEvent) => {
+                const target = e.target as HTMLInputElement;
+                // val.message = target.value;
+            },
+            searchRef: "searchRef",
             avatarImg: avatar,
             settingImg: setting,
-            addFileImg: addFile,
-            dotsImg:  dots,
             errMes: false,
-            users:[
-                {
-                    userName:"Вася",
-                    dateMes:"12 апр 2020",
-                    message:"тут какое-то сообщение новое сообщение ограниченное по длинне",
-                    messCounter:3
-                },
 
-            ]
+            chatAvatar: props.chatAvatar,
+            messages: props.messages,
+            selectChat: props.selectChat,
+            selectChatName: props.selectChatName,
+
+            chat: [
+                { messages: 'asd' },
+            ],
+            addUser:()=>{
+                ChatsController.create(login.login);
+            },
         });
     }
-
     render() {
         return this.compile(template, this.props);
     }
 }
+
+const withChat = withStore((state) => ({
+    selectChat: state.selectedChat,
+    chatName: state.selectedChat,
+    chats: state.chats.map((item, index)=>{
+        return {
+            onChat:()=>{
+                // ChatsController.delete(item.id)
+                ChatsController.selectChat(item.id)
+                ChatsController.selectChatName(item.title)
+            },
+            chatAvatar: item.avatar ? `https://ya-praktikum.tech/api/v2/resources/${item.avatar}` : avatar,
+            userName: item.title,
+            messCounter: item.unread_count,
+            message: item.last_message
+        }
+    })
+}))
+
+export const ChatPage = withChat(Chat);

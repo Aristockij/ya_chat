@@ -3,7 +3,7 @@ import template from './changeInfo.hbs';
 import {FormInput} from "../../components/FormInput";
 import arrow from "../../icons/arrow.svg";
 import store, {withStore} from "../../utils/Store";
-import MutateController from "../../controllers/MutateController";
+import MutateController from "../../controllers/UserController";
 import {UserData} from "../../api/UserAPI";
 import avatar from "../../icons/avatar.svg";
 
@@ -37,22 +37,18 @@ export class ChangeInfo extends Block {
                     return;
                 }
 
-                MutateController.mutate(val as UserData);
+                MutateController.mutateUserInfo(val as UserData);
 
             },
             avatarRef:"avatarRef",
             avatarImg: '',
             arrowImg: arrow,
-            typeName: "file",
-            nameInput: "avatar",
-            accept: "image/*",
-            inputAvatarRef: "inputAvatarRef",
             uploadAvatar: (e)=>{
                 const fileInput = e.target;
                 const selectedFile = fileInput.files[0];
 
                 MutateController.mutateAvatar(selectedFile);
-                console.log(this.refs.avatarRef)
+                console.log(this.refs.avatarRef);
                 this.refs.avatarRef.setProps({avatarImg: `https://ya-praktikum.tech/api/v2/resources/${ava}` });
             },
             fields: [

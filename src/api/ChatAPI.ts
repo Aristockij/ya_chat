@@ -1,5 +1,6 @@
 import BaseAPI from './BaseAPI';
 import { User } from './AuthAPI';
+import {Users} from "../controllers/UserController";
 
 export interface ChatInfo {
     id: number;
@@ -35,8 +36,12 @@ export class ChatsAPI extends BaseAPI {
         return this.http.get(`/${id}/users`)
     }
 
-    addUsers(id: number, users: number[]): Promise<unknown> {
+    addUsers(id: number, users: Users[]): Promise<unknown> {
         return this.http.put('/users', { users, chatId: id });
+    }
+
+    addChatAvatar(data): Promise<unknown> {
+        return this.http.put('/avatar', data);
     }
 
     async getToken(id: number): Promise<string> {

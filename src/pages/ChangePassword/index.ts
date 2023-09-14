@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import template from './changePassword.hbs';
 import {FormInput} from "../../components/FormInput";
 import arrow from "../../icons/arrow.svg";
-import MutateController from "../../controllers/MutateController";
+import MutateController from "../../controllers/UserController";
 import {UserData, UserPassword} from "../../api/UserAPI";
 
 

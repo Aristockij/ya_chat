@@ -1,13 +1,13 @@
 <section class="chat__wrap">
     <div class="chat__wrap-left">
         <form action="" class="form__search">
-            <input id="search" type="text" placeholder="Поиск" required>
-            {{{Button className="form__search-btn" onClick=addUser label="добавить"}}}
+            {{{Input onChange=searchUser ref="searchRef" idInput="search" name="search" type="text" placeholder="создать чат" required="true"}}}
+            {{{Button buttonType="button" className="form__search-btn" onClick=addUser label="создать"}}}
         </form>
         <div class="chat__wrap-list">
             <div class="chat__wrap-scroll">
-                {{#each users}}
-                    {{{ UserListItem userName=this.userName dateMes=this.dateMes message=this.message messCounter=this.messCounter }}}
+                {{#each chats}}
+                    {{{ ChatListItem chatAvatar=this.chatAvatar onClick=onChat userName=this.userName dateMes=this.dateMes message=this.message messCounter=this.messCounter }}}
                 {{/each}}
             </div>
         </div>
@@ -20,36 +20,6 @@
             </div>
         </div>
     </div>
-    <div class="chat__wrap-messages">
-        <div class="chat__wrap-info">
-            <div class="chat__wrap-name">
-                <div class="message__item-avatar">
-                    <img src="{{avatarImg}}" alt="avatar">
-                </div>
-                <div class="chat__wrap-name">
-                    Вася
-                </div>
-            </div>
-            <div class="chat__wrap-setting">
-                <img src="{{dotsImg}}" alt="dots">
-            </div>
-        </div>
-        <div class="chat__wrap-list">
-            <div class="chat__wrap-scroll">
-                {{{ InputMessage message="ккаой то текст" }}}
-                {{{ OutMessage message="тут тоже какой то текст" }}}
-            </div>
-        </div>
-        <form class="send__message" action="">
-            <button type="button" class="chat__wrap-file">
-                <img src="{{addFileImg}}" alt="file">
-            </button>
-            {{{ Input onChange=onChange }}}
-            {{#if errMes}}
-                <span class="send__message-err">пустое поле</span>
-            {{/if}}
-            {{{ SendMessageBtn onClick=onSubmit }}}
+    {{{Messenger selectedChat=this.selectedChat selectChatName=this.selectChatName}}}
 
-        </form>
-    </div>
 </section>

@@ -1,6 +1,7 @@
 import API, { ChatsAPI } from '../api/ChatAPI';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
+import {unregisterDecorator} from "handlebars";
 
 class ChatsController {
   private readonly api: ChatsAPI;
@@ -35,14 +36,42 @@ class ChatsController {
     await this.api.delete(id);
 
     this.fetchChats();
+    store.set('selectedChat', null);
   }
 
   getToken(id: number) {
     return this.api.getToken(id);
   }
 
+  async addAvatar(id, avatar) {
+    try {
+      const file: FormData = new FormData();
+      file.append('avatar', avatar);
+      file.append('chatId', id);
+
+      await this.api.addChatAvatar(file).then( data =>
+        {
+         let chatIndex = store.getState().chats.findIndex(chat => chat.id === id);
+         const currentChats = store.getState().chats;
+
+         let updatedChat = { ...currentChats[chatIndex], avatar: data.avatar };
+
+         currentChats[chatIndex] = updatedChat;
+
+         store.set('chats', currentChats);
+        }
+      );
+    } catch (e: any) {
+      console.error(e);
+    }
+  }
+
   selectChat(id: number) {
     store.set('selectedChat', id);
+  }
+
+  selectChatName(name: string) {
+    store.set('selectedChatName', name);
   }
 }
 

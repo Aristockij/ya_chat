@@ -2,7 +2,7 @@ import {Button} from './components/Button';
 import {Link} from './components/Link';
 import {registerComponent} from "./utils/resgiterComponent";
 import {FormInput} from "./components/FormInput";
-import {UserListItem} from "./components/UserListItem";
+import {ChatListItem} from "./components/ChatListItem";
 import {OutMessage} from "./components/OutMessage";
 import {InputMessage} from "./components/InputMessage";
 import {SendMessageBtn} from "./components/SendMessageBtn";
@@ -15,20 +15,23 @@ import {SignIn} from "./pages/SignIn";
 import {SignUp} from "./pages/SignUp";
 import {ProfilePage} from "./pages/Profile";
 import {ChangeInfoPage} from "./pages/ChangeInfo";
-import {Chat} from "./pages/Chat";
+import {ChatPage} from "./pages/Chat";
 import AuthController from './controllers/AuthController';
 import {ChangePassword} from "./pages/ChangePassword";
+import ChatsController from "./controllers/ChatsController";
+import {Messenger} from "./components/ChatView";
 
 registerComponent('Button', Button);
 registerComponent('Link', Link);
 registerComponent('FormInput', FormInput);
-registerComponent('UserListItem', UserListItem);
+registerComponent('ChatListItem', ChatListItem);
 registerComponent('OutMessage', OutMessage);
 registerComponent('InputMessage', InputMessage);
 registerComponent('SendMessageBtn', SendMessageBtn);
 registerComponent('Input', Input);
 registerComponent('ProfileAvatar', ProfileAvatar);
 registerComponent('ProfileItem', ProfileItem);
+registerComponent('Messenger', Messenger);
 
 
 enum Routes {
@@ -39,7 +42,6 @@ enum Routes {
   Chat = '/chat',
   ChangeInfo = '/changeInfo',
   ChangePassword = '/changePassword',
-
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -48,7 +50,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       .use(Routes.SignIn, SignIn)
       .use(Routes.SignUp, SignUp)
       .use(Routes.Profile, ProfilePage)
-      .use(Routes.Chat, Chat)
+      .use(Routes.Chat, ChatPage)
       .use(Routes.ChangeInfo, ChangeInfoPage)
       .use(Routes.ChangePassword, ChangePassword)
 
@@ -63,6 +65,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await AuthController.fetchUser();
+    await ChatsController.fetchChats();
 
     Router.start();
 
