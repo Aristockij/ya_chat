@@ -51,10 +51,9 @@ export class UserController {
         try {
             const items:User[] = await this.api.searchUser(data);
             const filteredUsers:User[] = items.filter((user) => user.login === data.login);
+            const idUser = filteredUsers[0].id;
 
-            ChatsController.addUserToChat(idChat, filteredUsers)
-
-
+            await ChatsController.addUserToChat(idChat, idUser);
         } catch (e: any) {
             console.error(e.message);
         }

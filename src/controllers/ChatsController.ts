@@ -28,8 +28,24 @@ class ChatsController {
     store.set('chats', chats);
   }
 
-  addUserToChat(id: number, userId: number) {
-    this.api.addUsers(id, [userId]);
+  async addUserToChat(id: number, userId: number) {
+      try{
+         await this.api.addUsers(id, [userId]);
+
+         await this.getChatUsers(id);
+      }catch (e){
+        console.log(e)
+      }
+  }
+
+  async deleteUser(id: number, chatId: number) {
+      try{
+          await this.api.removeUsers(id, [chatId])
+
+          await this.getChatUsers(id);
+      }catch (e){
+          console.log(e)
+      }
   }
 
   async delete(id: number) {
@@ -63,6 +79,24 @@ class ChatsController {
       );
     } catch (e: any) {
       console.error(e);
+    }
+  }
+
+  async getChatUsers(idChat){
+    try{
+      await this.api.getUsers(idChat)
+        .then((data)=>{
+          let chatIndex = store.getState().chats.findIndex(chat => chat.id === idChat );
+          const currentChats = store.getState().chats;
+
+          let updatedChat = { ...currentChats[chatIndex], users: data };
+
+          currentChats[chatIndex] = updatedChat;
+
+          store.set('chats', currentChats)
+        });
+    }catch (e){
+      console.log(e)
     }
   }
 

@@ -20,6 +20,7 @@ import AuthController from './controllers/AuthController';
 import {ChangePassword} from "./pages/ChangePassword";
 import ChatsController from "./controllers/ChatsController";
 import {Messenger} from "./components/ChatView";
+import {ChatUserItem} from "./components/ChatUserItem";
 
 registerComponent('Button', Button);
 registerComponent('Link', Link);
@@ -32,6 +33,7 @@ registerComponent('Input', Input);
 registerComponent('ProfileAvatar', ProfileAvatar);
 registerComponent('ProfileItem', ProfileItem);
 registerComponent('Messenger', Messenger);
+registerComponent('ChatUserItem', ChatUserItem);
 
 
 enum Routes {

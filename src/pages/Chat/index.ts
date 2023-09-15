@@ -2,9 +2,8 @@ import Block from '../../utils/Block';
 import template from './chat.hbs';
 import avatar from "../../icons/avatar.svg";
 import setting from "../../icons/setting.svg";
-import dots from "../../icons/dots.svg";
 import ChatsController from "../../controllers/ChatsController";
-import store, {withStore} from "../../utils/Store";
+import {withStore} from "../../utils/Store";
 
 
 interface LoginValues {
@@ -45,7 +44,10 @@ class Chat extends Block {
             addUser:()=>{
                 ChatsController.create(login.login);
             },
+
         });
+        console.log(props)
+
     }
     render() {
         return this.compile(template, this.props);
@@ -55,17 +57,17 @@ class Chat extends Block {
 const withChat = withStore((state) => ({
     selectChat: state.selectedChat,
     chatName: state.selectedChat,
-    chats: state.chats.map((item, index)=>{
+    chats: state.chats.map((item, index) => {
         return {
             onChat:()=>{
-                // ChatsController.delete(item.id)
-                ChatsController.selectChat(item.id)
-                ChatsController.selectChatName(item.title)
+                ChatsController.selectChat(item.id);
+                ChatsController.selectChatName(item.title);
+                ChatsController.getChatUsers(item.id);
             },
             chatAvatar: item.avatar ? `https://ya-praktikum.tech/api/v2/resources/${item.avatar}` : avatar,
             userName: item.title,
             messCounter: item.unread_count,
-            message: item.last_message
+            message: item.last_message,
         }
     })
 }))

@@ -1,5 +1,17 @@
 {{#if selectedChat}}
     <div class="chat__wrap-messages">
+
+        <div class="chat__wrap-user-list {{#if openPopup}} chat__wrap-user-list-show {{/if}}">
+            <div class="chat__wrap-user-wrap">
+                <div>
+                    {{#each users}}
+                        {{{ChatUserItem login=this.login onClick=this.deleteUser}}}
+                    {{/each}}
+                </div>
+                {{{Button buttonType="button" className="form__search-btn" onClick=closePopup label="close"}}}
+            </div>
+        </div>
+        
         <div class="chat__wrap-info">
             <div class="chat__wrap-name">
                 <div class="message__item-avatar">
@@ -23,7 +35,8 @@
                             {{{ Input idInput="avatar_chat" accept="image/*" onChange=addAvatar name="avatar_chat" type="file" }}}
                             <label for="avatar_chat">Изменить аватар</label>
                         </div>
-                        {{{Button onClick=closeChat label="закрыть чат"}}}
+                        {{{Button buttonType="button" onClick=userList label="список юзеров"}}}
+                        {{{Button buttonType="button" onClick=closeChat label="закрыть чат"}}}
                     </div>
                 </div>
             </div>
