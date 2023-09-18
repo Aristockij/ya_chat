@@ -42,7 +42,7 @@ export class ChangePassword extends Block {
                 if (hasErrors || val.newPassword !== val.newPasswordAgain ) {
                     return;
                 }
-                let dataValue: Record<string, string> = {};
+                const dataValue: Record<string, string> = {};
 
                 const keysToCopy = Object.keys(val).slice(0, 2);
 

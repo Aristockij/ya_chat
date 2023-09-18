@@ -13,7 +13,7 @@ interface LoginValues {
 class Chat extends Block {
     constructor(props: any) {
 
-        let login: LoginValues={
+        const login: LoginValues={
             login: '',
         }
         super({

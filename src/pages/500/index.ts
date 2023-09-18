@@ -1,6 +1,6 @@
 import Block from '../../utils/Block';
 import template from './500.hbs';
-import Router from "@utils/Router";
+import Router from "../../utils/Router";
 
 
 export class page500 extends Block {
