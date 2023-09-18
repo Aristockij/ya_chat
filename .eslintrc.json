@@ -1,4 +1,5 @@
 {
+  "parserOptions":{ "ecmaVersion": 8 },
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
@@ -24,6 +25,7 @@
     "arrow-body-style": "off",
     "prefer-promise-reject-errors": "off",
     "import/no-duplicates": "off",
+    "no-restricted-syntax": ["error", { "selector": "Record", "message": "Avoid using Record type.", "ignoreReadonly": true }],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -38,7 +40,8 @@
   "env": {
     "browser": true,
     "node": true,
-    "jasmine": true
+    "jasmine": true,
+    "es6": true
   },
   "settings": {
     "import/core-modules": ["handlebars", "vite"],

@@ -65,10 +65,10 @@ class ChatsController {
       file.append('chatId', id);
 
       await this.api.addChatAvatar(file).then( (data: any) => {
-         let chatIndex = store.getState().chats.findIndex((chat: any) => chat.id === id);
+         const chatIndex = store.getState().chats.findIndex((chat: any) => chat.id === id);
          const currentChats = store.getState().chats;
 
-         let updatedChat = { ...currentChats[chatIndex], avatar: data.avatar };
+         const updatedChat = { ...currentChats[chatIndex], avatar: data.avatar };
 
          currentChats[chatIndex] = updatedChat;
 
@@ -84,10 +84,10 @@ class ChatsController {
     try{
       await this.api.getUsers(idChat)
         .then((data)=>{
-          let chatIndex = store.getState().chats.findIndex((chat: any) => chat.id === idChat );
+          const chatIndex = store.getState().chats.findIndex((chat: any) => chat.id === idChat );
           const currentChats = store.getState().chats;
 
-          let updatedChat = { ...currentChats[chatIndex], users: data };
+          const updatedChat = { ...currentChats[chatIndex], users: data };
 
           currentChats[chatIndex] = updatedChat;
 

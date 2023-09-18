@@ -89,7 +89,7 @@ class ChatView extends Block{
 
                 if (files && files.length > 0) {
                     const selectedFile = files[0];
-                    let chatId: number | undefined = props.selectedChat;
+                    const chatId: number | undefined = props.selectedChat;
 
                     ChatsController.addAvatar(chatId, selectedFile);
                 } else {

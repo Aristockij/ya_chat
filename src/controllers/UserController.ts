@@ -28,9 +28,9 @@ export class UserController {
             const file: FormData = new FormData();
             file.append('avatar', data);
 
-            await this.api.mutateAvatar(file).then( (data: any) => {
-                if(data.avatar){
-                    const changedAvatar = {avatar: data.avatar};
+            await this.api.mutateAvatar(file).then( (item: any) => {
+                if(item.avatar){
+                    const changedAvatar = {avatar: item.avatar};
 
                     store.set('user', changedAvatar);
                 }
