@@ -44,11 +44,20 @@
   &-list{
     height: calc(100vh - 120px);
     position: relative;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &-scrolls{
+    height: 100%;
+    overflow: auto;
   }
 
   &-scroll{
-    height: 100%;
-    overflow: auto;
+    padding: 20px;
+    margin: auto;
+    width: 100%;
   }
 
   &-unselected{
@@ -131,9 +140,9 @@
     position: absolute;
     border-radius: 5px;
     border: 1px solid $black;
-    right: 10px;
     width: 150px;
-    bottom: -70px;
+    right: 44px;
+    bottom: -42px;
     padding: 10px;
     z-index: 2;
     background: $white;
@@ -143,7 +152,7 @@
     &>button:last-child{
       text-align: left;
       color: red;
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -179,7 +188,7 @@
   &-search{
     border: none;
     width: 300px;
-    margin: 0 150px 0 0;
+    margin: 0 200px 0 0;
     padding: 0;
   }
 }

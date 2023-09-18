@@ -7,61 +7,54 @@ import avatar from '../../icons/avatar.svg';
 
 
 class Profile extends Block {
-    constructor() {
+    constructor(props) {
         super({
             arrowImg: arrow,
             logout: ()=> {
                 AuthController.logout();
             },
-            profileName: '',
+            profileName: props.first_name,
             avatarRef:"avatarRef",
-            avatarImg: avatar,
+            avatarImg:  props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${props.avatar}` : avatar,
             items:[
                 {
                     itemName: "Почта",
                     ref: "mailRef",
-                    itemValue: "",
+                    itemValue: props.email,
                     tagName: "email",
                 },
                 {
                     itemName: "Логин",
                     ref: "loginRef",
-                    itemValue: "dmitry",
+                    itemValue: props.login,
                     tagName: "login",
                 },
                 {
                     itemName: "Имя",
                     ref: "nameRef",
-                    itemValue: "Дмитрий",
+                    itemValue: props.first_name,
                     tagName: "first_name",
                 },
                 {
                     itemName: "Фамилия",
                     ref: "namesecRef",
-                    itemValue: "Дк",
+                    itemValue: props.second_name,
                     tagName: "second_name",
                 },
                 {
                     itemName: "Имя в чате",
                     ref: "nameChatRef",
-                    itemValue: "Дк",
+                    itemValue: props.display_name,
                     tagName: "display_name",
                 },
                 {
                     itemName: "Телефон",
                     ref: "phoneRef",
-                    itemValue: "+7 (999) 999 99 99",
+                    itemValue: props.phone,
                     tagName: "phone",
                 },
             ]
         });
-        (this.props.items.map((item)=>{
-            const tagName = item.tagName;
-            if (store.getState().user.hasOwnProperty(tagName)) {
-                this.refs[item.ref].setProps({ itemValue: store.getState().user[tagName] });
-            }
-        }))
-        this.refs.avatarRef.setProps({profileName: store.getState().user.first_name })
     }
     render() {
         return this.compile(template, this.props);

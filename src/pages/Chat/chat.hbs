@@ -5,9 +5,9 @@
             {{{Button buttonType="button" className="form__search-btn" onClick=addUser label="создать"}}}
         </form>
         <div class="chat__wrap-list">
-            <div class="chat__wrap-scroll">
+            <div class="chat__wrap-scrolls">
                 {{#each chats}}
-                    {{{ ChatListItem chatAvatar=this.chatAvatar onClick=onChat userName=this.userName dateMes=this.dateMes message=this.message messCounter=this.messCounter }}}
+                    {{{ ChatListItem chatAvatar=this.chatAvatar onClick=onChat userName=this.userName dateMes=this.dateMes message=this.message.content messCounter=this.messCounter }}}
                 {{/each}}
             </div>
         </div>

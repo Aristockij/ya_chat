@@ -17,6 +17,7 @@ interface MessengerProps {
     selectChatName: string,
     avatarImg: string,
     users: object[],
+    isMine: boolean;
     events: {
         click: () => void
     }
@@ -45,7 +46,9 @@ class ChatView extends Block{
             basketImg: basket,
             chatName: props.selectChatName,
             selfUser: props.userId,
-            openPopup: false,
+            popupRef: "popupRef",
+            isMine: props.isMine,
+
             sendMessage:(e: FocusEvent)=>{
                 e.preventDefault();
                 if(val.message.length === 0 ){
@@ -54,10 +57,11 @@ class ChatView extends Block{
                     return;
                 }
                 this.props.errMes = false;
-                console.log(val)
-                val.message = ''
 
-                // MessagesController.sendMessage(this.props.selectedChat!, message);
+                MessagesController.sendMessage(this.props.selectedChat!, val.message);
+
+                console.log(this.props);
+                val.message = ''
             },
             addFile: () => {
                 console.log(props);
@@ -81,9 +85,6 @@ class ChatView extends Block{
             addUser:()=>{
                 UserController.searchUser(valUser, props.selectedChat);
             },
-            userList:()=>{
-
-            },
             addAvatar:(e)=>{
                 const fileInput = e.target;
                 const selectedFile = fileInput.files[0];
@@ -92,7 +93,6 @@ class ChatView extends Block{
                 ChatsController.addAvatar(chatId, selectedFile);
             },
         });
-
     }
     render() {
         return this.compile(template, this.props);
@@ -123,14 +123,24 @@ const withSelectedChatMessages = withStore(state => {
         };
     });
 
+    const messages = (state.messages || {})[selectedChatId].map((item)=>{
+        return {...item, isMine: state.user.id  === item.user_id}
+    })
 
     return {
-        messages: (state.messages || {})[selectedChatId] || [],
+        messages: messages || [],
         selectedChat: state.selectedChat,
         selectedChatName: state.selectedChatName,
         userId: state.user.id,
         avatarImg: avatarImg ? `https://ya-praktikum.tech/api/v2/resources/${avatarImg}` : avatar,
         users: usersWithLog,
+        isOpenPopup: state.isOpenPopup,
+        openPopup:()=>{
+            store.set("isOpenPopup", true)
+        },
+        closePopup:()=>{
+            store.set("isOpenPopup", false)
+        }
     };
 });
 

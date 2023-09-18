@@ -38,16 +38,11 @@ class Chat extends Block {
             selectChat: props.selectChat,
             selectChatName: props.selectChatName,
 
-            chat: [
-                { messages: 'asd' },
-            ],
             addUser:()=>{
                 ChatsController.create(login.login);
             },
-
         });
-        console.log(props)
-
+        ChatsController.fetchChats();
     }
     render() {
         return this.compile(template, this.props);

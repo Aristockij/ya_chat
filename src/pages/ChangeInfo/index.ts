@@ -8,7 +8,7 @@ import {UserData} from "../../api/UserAPI";
 import avatar from "../../icons/avatar.svg";
 
 export class ChangeInfo extends Block {
-    constructor() {
+    constructor(props) {
         const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
         const mailRegExp = /.+@.+\..+/i;
         const nameRegExp = /^[a-яё]+(?:[-][a-яё]+)*$/i
@@ -40,16 +40,13 @@ export class ChangeInfo extends Block {
                 MutateController.mutateUserInfo(val as UserData);
 
             },
-            avatarRef:"avatarRef",
-            avatarImg: '',
+            avatarImg: props.avatarImg,
             arrowImg: arrow,
             uploadAvatar: (e)=>{
                 const fileInput = e.target;
                 const selectedFile = fileInput.files[0];
 
                 MutateController.mutateAvatar(selectedFile);
-                console.log(this.refs.avatarRef);
-                this.refs.avatarRef.setProps({avatarImg: `https://ya-praktikum.tech/api/v2/resources/${ava}` });
             },
             fields: [
                 {
@@ -57,6 +54,7 @@ export class ChangeInfo extends Block {
                     label: "Почта",
                     ref: "emailRef",
                     fieldType: "text",
+                    fieldValue: props.email,
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
                         (this.refs.emailRef as FormInput).checkMatches(target.value, mailRegExp ,"символ @ обязателен");
@@ -71,6 +69,7 @@ export class ChangeInfo extends Block {
                     label: "Логин",
                     ref: "loginRef",
                     fieldType: "text",
+                    fieldValue: props.login,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.login = target.value;
@@ -85,6 +84,7 @@ export class ChangeInfo extends Block {
                     label: "Имя",
                     ref: "first_nameRef",
                     fieldType: "text",
+                    fieldValue: props.first_name,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.first_name = target.value;
@@ -99,6 +99,7 @@ export class ChangeInfo extends Block {
                     label: "Фамилия",
                     ref: "second_nameRef",
                     fieldType: "text",
+                    fieldValue: props.second_name,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.second_name = target.value;
@@ -113,6 +114,7 @@ export class ChangeInfo extends Block {
                     label: "Имя в чате",
                     ref: "display_nameRef",
                     fieldType: "text",
+                    fieldValue: props.display_name,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.display_name = target.value;
@@ -128,6 +130,7 @@ export class ChangeInfo extends Block {
                     ref: "phoneRef",
                     fieldType: "text",
                     showPass: true,
+                    fieldValue: props.phone,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.phone = target.value;
@@ -140,35 +143,22 @@ export class ChangeInfo extends Block {
             ]
         });
         const val: Record<string, string> = {
-            email:  this.props.fields[0].value,
-            login: this.props.fields[1].value,
-            first_name: this.props.fields[2].value,
-            second_name: this.props.fields[3].value,
-            display_name: this.props.fields[4].value,
-            phone: this.props.fields[5].value,
+            email:  props.email,
+            login: props.login,
+            first_name: props.first_name,
+            second_name: props.second_name,
+            display_name: props.display_name,
+            phone: props.phone,
         };
-
-        (this.props.fields.map((item)=>{
-            const tagName = item.name;
-
-            if (store.getState().user.hasOwnProperty(tagName)) {
-                this.refs[item.ref].setProps({ fieldValue: store.getState().user[tagName] });
-            }
-            if(val.hasOwnProperty(tagName)){
-                val[tagName] = store.getState().user[tagName]
-            }
-        }))
-
-        this.refs.avatarRef.setProps({profileName: store.getState().user.first_name });
-        let ava = store.getState().user.avatar;
-
-        this.refs.avatarRef.setProps({avatarImg: `https://ya-praktikum.tech/api/v2/resources/${ava}` });
     }
     render() {
         return this.compile(template, this.props);
     }
 }
 
-const withInfo = withStore((state) => ({ ...state.user }))
+const withInfo = withStore((state) => ({
+    ...state.user,
+    avatarImg: state.user.avatar ? `https://ya-praktikum.tech/api/v2/resources/${state.user.avatar}` : avatar,
+}))
 
 export const ChangeInfoPage = withInfo(ChangeInfo);

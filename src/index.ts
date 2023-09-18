@@ -21,6 +21,7 @@ import {ChangePassword} from "./pages/ChangePassword";
 import ChatsController from "./controllers/ChatsController";
 import {Messenger} from "./components/ChatView";
 import {ChatUserItem} from "./components/ChatUserItem";
+import {PopupWrap} from "./components/PopupWrap";
 
 registerComponent('Button', Button);
 registerComponent('Link', Link);
@@ -34,6 +35,7 @@ registerComponent('ProfileAvatar', ProfileAvatar);
 registerComponent('ProfileItem', ProfileItem);
 registerComponent('Messenger', Messenger);
 registerComponent('ChatUserItem', ChatUserItem);
+registerComponent('PopupWrap', PopupWrap);
 
 
 enum Routes {

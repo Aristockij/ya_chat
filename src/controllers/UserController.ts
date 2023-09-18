@@ -31,7 +31,13 @@ export class UserController {
             const file: FormData = new FormData();
             file.append('avatar', data);
 
-            await this.api.mutateAvatar(file);
+            await this.api.mutateAvatar(file).then( (data: any) => {
+                if(data.avatar){
+                    const changedAvatar = {avatar: data.avatar};
+
+                    store.set('user', changedAvatar);
+                }
+            });
         } catch (e: any) {
             console.error(e);
         }
