@@ -1,5 +1,5 @@
 import BaseAPI from "./BaseAPI";
-import {User} from "../controllers/UserController";
+import { User } from './AuthAPI';
 
 export interface UserData {
     id?: number;
@@ -33,5 +33,10 @@ export class UserAPI extends BaseAPI{
     searchUser(data: object): Promise<User[]> {
         return this.http.post('/search', data);
     }
+
+    read = undefined;
+    create = undefined;
+    update = undefined;
+    delete = undefined;
 }
 export default new UserAPI();

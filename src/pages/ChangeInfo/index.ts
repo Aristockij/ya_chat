@@ -2,13 +2,13 @@ import Block from '../../utils/Block';
 import template from './changeInfo.hbs';
 import {FormInput} from "../../components/FormInput";
 import arrow from "../../icons/arrow.svg";
-import store, {withStore} from "../../utils/Store";
+import {withStore} from "../../utils/Store";
 import MutateController from "../../controllers/UserController";
 import {UserData} from "../../api/UserAPI";
 import avatar from "../../icons/avatar.svg";
 
 export class ChangeInfo extends Block {
-    constructor(props) {
+    constructor(props: any) {
         const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
         const mailRegExp = /.+@.+\..+/i;
         const nameRegExp = /^[a-яё]+(?:[-][a-яё]+)*$/i
@@ -42,11 +42,16 @@ export class ChangeInfo extends Block {
             },
             avatarImg: props.avatarImg,
             arrowImg: arrow,
-            uploadAvatar: (e)=>{
-                const fileInput = e.target;
-                const selectedFile = fileInput.files[0];
+            uploadAvatar: (e: Event)=>{
+                const fileInput = e.target as HTMLInputElement;
+                const files = fileInput.files;
+                if (files && files.length > 0) {
+                    const selectedFile = files[0];
 
-                MutateController.mutateAvatar(selectedFile);
+                    MutateController.mutateAvatar(selectedFile);
+                } else {
+                    console.error('Не выбран файл');
+                }
             },
             fields: [
                 {

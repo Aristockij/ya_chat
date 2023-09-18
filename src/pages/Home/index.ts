@@ -1,9 +1,5 @@
 import Block from '../../utils/Block';
 import template from './home.hbs';
-// import {render} from "../../utils/render";
-import router from '../../utils/Router';
-import { Link } from '../../components/Link';
-
 
 export class HomePage extends Block {
   constructor() {

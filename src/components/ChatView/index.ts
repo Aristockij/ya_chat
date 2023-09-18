@@ -8,6 +8,7 @@ import dots from "../../icons/dots.svg";
 import basket from "../../icons/basket.svg";
 import ChatsController from "../../controllers/ChatsController";
 import UserController from "../../controllers/UserController";
+import {User} from "../../api/AuthAPI";
 
 interface MessengerProps {
     selectedChat: number | undefined;
@@ -27,16 +28,13 @@ interface FieldValues {
     message: string;
 }
 
-interface FieldValuesSearch {
-    login: string;
-}
 
 class ChatView extends Block{
     constructor(props: MessengerProps) {
         const val: FieldValues = {
             message: '',
         }
-        const valUser: FieldValuesSearch = {
+        const valUser = {
             login: '',
         }
         super({
@@ -83,14 +81,20 @@ class ChatView extends Block{
                 valUser.login = target.value;
             },
             addUser:()=>{
-                UserController.searchUser(valUser, props.selectedChat);
+                UserController.searchUser((valUser as User), props.selectedChat);
             },
-            addAvatar:(e)=>{
-                const fileInput = e.target;
-                const selectedFile = fileInput.files[0];
-                let chatId: number | undefined = props.selectedChat;
+            addAvatar:(e: Event)=>{
+                const fileInput = e.target as HTMLInputElement;
+                const files = fileInput.files;
 
-                ChatsController.addAvatar(chatId, selectedFile);
+                if (files && files.length > 0) {
+                    const selectedFile = files[0];
+                    let chatId: number | undefined = props.selectedChat;
+
+                    ChatsController.addAvatar(chatId, selectedFile);
+                } else {
+                    console.error('Не выбран файл');
+                }
             },
         });
     }
@@ -110,15 +114,15 @@ const withSelectedChatMessages = withStore(state => {
             messages: [],
             selectedChat: undefined,
             selectedChatName: undefined,
-            userId: state.user.id
+            userId: state.user.id,
         };
     }
 
     const usersWithLog = (selectedChat ? selectedChat.users : null) || [];
     usersWithLog.forEach(user => {
         user.deleteUser = () => {
-            if(state.selectedChat !== undefined){
-                ChatsController.deleteUser(state.selectedChat, user.id)
+            if (state.selectedChat !== undefined) {
+                ChatsController.deleteUser(state.selectedChat, user.id);
             }
         };
     });

@@ -1,7 +1,7 @@
 import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
 import store from '../utils/Store';
 import router from '../utils/Router';
-// import MessagesController from './MessagesController';
+import MessagesController from './MessagesController';
 
 export class AuthController {
   private readonly api: AuthAPI;
@@ -16,7 +16,7 @@ export class AuthController {
 
       await this.fetchUser();
 
-      router.go('/profile');
+      router.go('/chat');
     } catch (e: any) {
       console.error(e.message);
     }
@@ -45,7 +45,7 @@ export class AuthController {
 
   async logout() {
     try {
-      // MessagesController.cloxseAll();
+      MessagesController.closeAll();
 
       await this.api.logout();
 

@@ -105,8 +105,8 @@ class Block<P extends Record<string, any> = any> {
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any) {
-    // console.log(oldProps)
-    // console.log(newProps)
+    console.log(oldProps)
+    console.log(newProps)
     return true;
   }
 

@@ -3,7 +3,7 @@ import template from './changePassword.hbs';
 import {FormInput} from "../../components/FormInput";
 import arrow from "../../icons/arrow.svg";
 import MutateController from "../../controllers/UserController";
-import {UserData, UserPassword} from "../../api/UserAPI";
+import {UserPassword} from "../../api/UserAPI";
 
 
 export class ChangePassword extends Block {
@@ -50,7 +50,7 @@ export class ChangePassword extends Block {
                     dataValue[key] = val[key];
                 });
 
-                MutateController.mutatePassword(dataValue as UserPassword)
+                MutateController.mutatePassword(dataValue as unknown as UserPassword)
             },
             arrowImg: arrow,
             fields: [

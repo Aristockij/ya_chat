@@ -5,11 +5,6 @@ import AuthController from "../../controllers/AuthController";
 import { SigninData } from '../../api/AuthAPI';
 
 
-export interface SignInVal {
-  login: string;
-  password: string;
-}
-
 export class SignIn extends Block {
   constructor() {
     const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
@@ -19,10 +14,6 @@ export class SignIn extends Block {
     }
 
     super({
-      onSignUp: ()=> {
-        // render('signUp');
-      },
-
       onSubmit:(e: MouseEvent)=>{
         e.preventDefault();
         const fieldsName = this.props.fields;
@@ -44,7 +35,7 @@ export class SignIn extends Block {
           return;
         }
 
-        AuthController.signin(val as SigninData);
+        AuthController.signin(val as unknown as SigninData);
       },
       fields: [
         {

@@ -1,7 +1,6 @@
-import API, { ChatsAPI } from '../api/ChatAPI';
+import API, {ChatsAPI} from '../api/ChatAPI';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
-import {unregisterDecorator} from "handlebars";
 
 class ChatsController {
   private readonly api: ChatsAPI;
@@ -59,15 +58,14 @@ class ChatsController {
     return this.api.getToken(id);
   }
 
-  async addAvatar(id, avatar) {
+  async addAvatar(id:any, avatar:any) {
     try {
       const file: FormData = new FormData();
       file.append('avatar', avatar);
       file.append('chatId', id);
 
-      await this.api.addChatAvatar(file).then( data =>
-        {
-         let chatIndex = store.getState().chats.findIndex(chat => chat.id === id);
+      await this.api.addChatAvatar(file).then( (data: any) => {
+         let chatIndex = store.getState().chats.findIndex((chat: any) => chat.id === id);
          const currentChats = store.getState().chats;
 
          let updatedChat = { ...currentChats[chatIndex], avatar: data.avatar };
@@ -82,11 +80,11 @@ class ChatsController {
     }
   }
 
-  async getChatUsers(idChat){
+  async getChatUsers(idChat: any){
     try{
       await this.api.getUsers(idChat)
         .then((data)=>{
-          let chatIndex = store.getState().chats.findIndex(chat => chat.id === idChat );
+          let chatIndex = store.getState().chats.findIndex((chat: any) => chat.id === idChat );
           const currentChats = store.getState().chats;
 
           let updatedChat = { ...currentChats[chatIndex], users: data };
@@ -110,8 +108,5 @@ class ChatsController {
 }
 
 const controller = new ChatsController();
-
-// @ts-ignore
-window.chatsController = controller;
 
 export default controller;

@@ -1,13 +1,13 @@
 import Block from '../../utils/Block';
 import template from './profile.hbs';
 import arrow from "../../icons/arrow.svg";
-import store, { withStore } from '../../utils/Store';
+import { withStore } from '../../utils/Store';
 import AuthController from "../../controllers/AuthController";
 import avatar from '../../icons/avatar.svg';
 
 
 class Profile extends Block {
-    constructor(props) {
+    constructor(props: any) {
         super({
             arrowImg: arrow,
             logout: ()=> {

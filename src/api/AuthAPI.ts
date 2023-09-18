@@ -24,6 +24,8 @@ export interface User {
     password: string;
     phone: string;
     avatar: string;
+    chatId?: number;
+    deleteUser?: ()=> void;
 }
 
 export class AuthAPI extends BaseAPI {

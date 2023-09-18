@@ -42,15 +42,14 @@ export default class WSTransport extends EventBus {
   }
 
   private setupPing() {
-    this.pingInterval = setInterval(() => {
+    this.pingInterval = window.setInterval(() => {
       this.send({ type: 'ping' });
-    }, 5000)
+    }, 5000);
 
     this.on(WSTransportEvents.Close, () => {
       clearInterval(this.pingInterval);
-
       this.pingInterval = 0;
-    })
+    });
   }
 
   private subscribe(socket: WebSocket) {

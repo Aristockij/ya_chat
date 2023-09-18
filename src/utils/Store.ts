@@ -5,6 +5,8 @@ import { User } from '../api/AuthAPI';
 import { ChatInfo } from '../api/ChatAPI';
 import { Message } from '../controllers/MessagesController';
 
+type PropsObject = Record<string, any>;
+
 export enum StoreEvents {
     Updated = 'updated'
 }
@@ -34,12 +36,9 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-// @ts-ignore
-window.store = store;
 
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
-    return function wrap<P>(Component: typeof Block<SP & P>){
-
+    return function wrap<P extends PropsObject>(Component: typeof Block<SP & P>) {
         return class WithStore extends Component {
 
             constructor(props: Omit<P, keyof SP>) {

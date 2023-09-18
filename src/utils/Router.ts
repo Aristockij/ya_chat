@@ -1,6 +1,6 @@
 import Block from './Block';
 
-interface BlockProps<P = any> {
+interface BlockProps<P extends Record<string, any> = any> {
     new(props: P): Block<P>;
 }
 

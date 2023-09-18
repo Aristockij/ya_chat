@@ -11,7 +11,7 @@ interface LoginValues {
 }
 
 class Chat extends Block {
-    constructor(props) {
+    constructor(props: any) {
 
         let login: LoginValues={
             login: '',
@@ -23,10 +23,6 @@ class Chat extends Block {
             searchUser:(e: FocusEvent)=>{
                 const target = e.target as HTMLInputElement;
                 login.login = target.value;
-            },
-            sendMessage: (e: FocusEvent) => {
-                const target = e.target as HTMLInputElement;
-                // val.message = target.value;
             },
             searchRef: "searchRef",
             avatarImg: avatar,
@@ -52,7 +48,7 @@ class Chat extends Block {
 const withChat = withStore((state) => ({
     selectChat: state.selectedChat,
     chatName: state.selectedChat,
-    chats: state.chats.map((item, index) => {
+    chats: state.chats.map((item) => {
         return {
             onChat:()=>{
                 ChatsController.selectChat(item.id);

@@ -6,7 +6,8 @@ export interface ChatInfo {
     title: string;
     avatar: string;
     unread_count: number;
-    users: object[];
+    users: User[];
+    deleteUser: ()=>void;
     last_message: {
         user: User,
         time: string;
@@ -36,15 +37,15 @@ export class ChatsAPI extends BaseAPI {
         return this.http.get(`/${id}/users`)
     }
 
-    addUsers(id: number, users: User[]): Promise<unknown> {
+    addUsers(id: number, users: number[]): Promise<unknown> {
         return this.http.put('/users', { users, chatId: id });
     }
 
-    removeUsers(id: number, users: User[]): Promise<unknown> {
+    removeUsers(id: number, users: number[]): Promise<unknown> {
         return this.http.delete('/users', { users, chatId: id });
     }
 
-    addChatAvatar(data): Promise<unknown> {
+    addChatAvatar(data: FormData): Promise<unknown> {
         return this.http.put('/avatar', data);
     }
 
