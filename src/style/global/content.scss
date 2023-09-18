@@ -79,6 +79,7 @@
   &-user{
     display: flex;
     justify-content: space-between;
+
     img{
       width: 20px;
       height: 20px;
@@ -91,9 +92,10 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 1, .5);
+    background-color: rgba(0, 0, 1, 50%);
     z-index: 10;
     display: none;
+
     &-show{
       display: block;
     }
@@ -113,9 +115,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &>button{
-      position: relative;
-    }
   }
 
   &-info{
@@ -146,10 +145,12 @@
     padding: 10px;
     z-index: 2;
     background: $white;
-    &>button{
+
+    button{
       margin-bottom: 10px;
     }
-    &>button:last-child{
+
+    button:last-child{
       text-align: left;
       color: red;
       margin-bottom: 0;
@@ -159,17 +160,20 @@
   &-download{
     margin-bottom: 5px;
     cursor: pointer;
-    &:hover label{
-      color: $blue;
-    }
+
     input{
       display: none;
     }
+
     label{
       font-size: 14px;
       line-height: 1;
       height: 20px;
       cursor: pointer;
+    }
+
+    &:hover label{
+      color: $blue;
     }
   }
 
@@ -423,6 +427,7 @@
       width: 100%;
       text-align: left;
       cursor: pointer;
+      
       &:hover{
         opacity: .5;
       }
