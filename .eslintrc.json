@@ -10,6 +10,14 @@
     "prettier"
   ],
   "rules": {
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/order": "off",
+    "import/no-self-import": "off",
+    "import/no-cycle": "off",
+    "import/no-relative-packages": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
     "no-prototype-builtins": "off",
