@@ -25,7 +25,6 @@
     "arrow-body-style": "off",
     "prefer-promise-reject-errors": "off",
     "import/no-duplicates": "off",
-    "no-restricted-syntax": ["error", { "selector": "Record", "message": "Avoid using Record type.", "ignoreReadonly": true }],
     "import/extensions": [
       "error",
       "ignorePackages",
