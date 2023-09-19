@@ -39,12 +39,12 @@ registerComponent('PopupWrap', PopupWrap);
 
 
 enum Routes {
-  Index = '/',
-  SignIn = '/sign-in',
+  Index = '/list',
+  SignIn = '/',
   SignUp = '/sign-up',
   Profile = '/profile',
-  Chat = '/chat',
-  ChangeInfo = '/changeInfo',
+  Chat = '/messenger',
+  ChangeInfo = '/settings',
   ChangePassword = '/changePassword',
 }
 

@@ -1,5 +1,5 @@
 <section class="profile__wrap">
-    {{#Link className="arrow__back"  to="/chat" }}
+    {{#Link className="arrow__back"  to="/messenger" }}
         <img src="{{arrowImg}}" alt="back">
     {{/Link}}
     {{{ ProfileAvatar ref=avatarRef profileName=profileName avatarImg=avatarImg}}}
@@ -11,7 +11,7 @@
         </ul>
     </div>
     <div class="profile__info-btns">
-        {{{Link className="profile__info-btns-link" label="Изменить данные" to="/changeInfo"}}}
+        {{{Link className="profile__info-btns-link" label="Изменить данные" to="/settings"}}}
         {{{Link className="profile__info-btns-link" label="Изменить пароль" to="/changePassword"}}}
         {{{Button onClick=logout className="profile__info-btns-logout" buttonType="button" label="Выйти" }}}
     </div>

@@ -7,7 +7,7 @@ export class HomePage extends Block {
       buttons: [
         {
           label: 'Вход',
-          to: '/sign-in',
+          to: '/',
         },
         {
           label: 'Регистрация',
@@ -15,7 +15,7 @@ export class HomePage extends Block {
         },
         {
           label: 'Чат',
-          to: '/chat',
+          to: '/messenger',
         },
         {
           label: 'Профиль',
@@ -23,7 +23,7 @@ export class HomePage extends Block {
         },
         {
           label: 'Изменить данные',
-          to: '/changeInfo',
+          to: '/settings',
         },
         {
           label: 'Изменить пароль',
