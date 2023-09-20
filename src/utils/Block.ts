@@ -101,7 +101,7 @@ class Block<P extends Record<string, any> = any> {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
-    console.log(newProps, oldProps)
+    // console.log(newProps, oldProps)
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any) {
@@ -134,7 +134,7 @@ class Block<P extends Record<string, any> = any> {
     this._element = newElement;
 
     this._addEvents();
-    this._removeEvents();
+    // this._removeEvents();
   }
 
   protected compile(template: (context: any) => string, context: any) {

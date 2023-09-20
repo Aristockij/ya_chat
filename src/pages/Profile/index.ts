@@ -1,52 +1,66 @@
 import Block from '../../utils/Block';
 import template from './profile.hbs';
-import {render} from "../../utils/render";
 import arrow from "../../icons/arrow.svg";
+import { withStore } from '../../utils/Store';
+import AuthController from "../../controllers/AuthController";
+import avatar from '../../icons/avatar.svg';
 
 
-export class Profile extends Block {
-    constructor() {
+class Profile extends Block {
+    constructor(props: any) {
         super({
-            linkChat: ()=>{
-                render('chat')
-            },
-            linkChangeInfo: ()=>{
-                render('changeInfo')
-            },
-            linkChangePassword: ()=>{
-                render('changePassword')
-            },
             arrowImg: arrow,
+            logout: ()=> {
+                AuthController.logout();
+            },
+            profileName: props.first_name,
+            avatarRef:"avatarRef",
+            avatarImg:  props.avatar ? `https://ya-praktikum.tech/api/v2/resources/${props.avatar}` : avatar,
             items:[
                 {
                     itemName: "Почта",
-                    itemValue: "dk@yandex.ru",
+                    ref: "mailRef",
+                    itemValue: props.email,
+                    tagName: "email",
                 },
                 {
                     itemName: "Логин",
-                    itemValue: "dmitry",
+                    ref: "loginRef",
+                    itemValue: props.login,
+                    tagName: "login",
                 },
                 {
                     itemName: "Имя",
-                    itemValue: "Дмитрий",
+                    ref: "nameRef",
+                    itemValue: props.first_name,
+                    tagName: "first_name",
                 },
                 {
                     itemName: "Фамилия",
-                    itemValue: "Дк",
+                    ref: "namesecRef",
+                    itemValue: props.second_name,
+                    tagName: "second_name",
                 },
                 {
                     itemName: "Имя в чате",
-                    itemValue: "Дк",
+                    ref: "nameChatRef",
+                    itemValue: props.display_name,
+                    tagName: "display_name",
                 },
                 {
                     itemName: "Телефон",
-                    itemValue: "+7 (999) 999 99 99",
+                    ref: "phoneRef",
+                    itemValue: props.phone,
+                    tagName: "phone",
                 },
             ]
         });
     }
-
     render() {
         return this.compile(template, this.props);
     }
 }
+
+const withUser = withStore((state) => ({ ...state.user }))
+
+export const ProfilePage = withUser(Profile);

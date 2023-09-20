@@ -1,9 +1,16 @@
 <section class="profile__wrap">
-    {{#Button onClick=linkChat className="arrow__back" buttonType="button" }}
+    {{#Link className="arrow__back" to="/profile" }}
         <img src="{{arrowImg}}" alt="back">
-    {{/Button}}
-    {{{ ProfileAvatar profileName="Дмитрий" }}}
+    {{/Link}}
+    {{{ ProfileAvatar profileName=profileName avatarImg=avatarImg}}}
+
+
     <form class="profile__info-list" action="">
+        <div>
+            <span>Поменять аватар</span>
+            {{{ Input idInput="avatar-input" ref=inputAvatarRef accept="image/*" onChange=uploadAvatar name="avatar" type="file" }}}
+        </div>
+        <br>
         <ul>
             {{#each fields}}
                 {{{FormInput
@@ -11,7 +18,7 @@
                         fieldName=this.name
                         label=this.label
                         fieldType=this.fieldType
-                        value=this.value
+                        fieldValue=this.fieldValue
                         onChange=this.onChange
                         onFocusOut=this.onFocusOut
                         onFocusin=this.onFocusin

@@ -1,0 +1,65 @@
+{{#if selectedChat}}
+    <div class="chat__wrap-messages">
+        {{#PopupWrap isOpenPopup=isOpenPopup }}
+            <div class="chat__wrap-user-wrap">
+                <div>
+                    {{#each users}}
+                        {{{ChatUserItem login=this.login onClick=this.deleteUser}}}
+                    {{/each}}
+                </div>
+                {{{Button buttonType="button" className="form__search-btn" onClick=closePopup label="close"}}}
+            </div>
+        {{/PopupWrap}}
+        <div class="chat__wrap-info">
+            <div class="chat__wrap-name">
+                <div class="message__item-avatar">
+                    <img src="{{avatarImg}}" alt="avatar">
+                </div>
+                <div class="chat__wrap-name">
+                    {{selectedChatName}}
+                </div>
+            </div>
+            <div class="chat__wrap-right">
+                <form action="" class="form__search chat__wrap-search">
+                    {{{Input onChange=searchUser ref="searchRef" idInput="search" name="search" type="text" placeholder="добавить юзера" required="true"}}}
+                    {{{Button buttonType="button" className="form__search-btn" onClick=addUser label="добавить"}}}
+                </form>
+                <div class="chat__wrap-setting">
+                    {{#Button onClick=toggleModal}}
+                        <img src="{{dotsImg}}" alt="dots">
+                    {{/Button}}
+                    <div class='chat__wrap-modal'>
+                        <div class="chat__wrap-download">
+                            {{{ Input idInput="avatar_chat" accept="image/*" onChange=addAvatar name="avatar_chat" type="file" }}}
+                            <label for="avatar_chat">Изменить аватар</label>
+                        </div>
+                        {{{Button buttonType="button" onClick=openPopup label="список юзеров"}}}
+                        {{{Button buttonType="button" onClick=closeChat label="закрыть чат"}}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="chat__wrap-list">
+            <div class="chat__wrap-scroll">
+                {{#each messages}}
+                    {{{ OutMessage message=content isMine=this.isMine }}}
+                {{/each}}
+            </div>
+        </div>
+        <form class="send__message" action="">
+            {{#Button onClick=addFile buttonType="button" className="chat__wrap-file" }}
+                <img src="{{addFileImg}}" alt="file">
+            {{/Button }}
+            {{{ Input onChange=onChange }}}
+            {{#if errMes}}
+                <span class="send__message-err">пустое поле</span>
+            {{/if}}
+            {{{ SendMessageBtn onClick=sendMessage }}}
+        </form>
+    </div>
+{{else}}
+    <div class="chat__wrap-unselected">
+        пока вы не выбрали чат
+    </div>
+{{/if}}

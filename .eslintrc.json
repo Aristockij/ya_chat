@@ -1,4 +1,5 @@
 {
+  "parserOptions":{ "ecmaVersion": 8 },
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
@@ -9,7 +10,20 @@
     "prettier"
   ],
   "rules": {
+    "no-restricted-syntax": "off",
+    "no-continue": "off",
+    "no-prototype-builtins": "off",
+    "prefer-destructuring": "off",
+    "no-shadow": "off",
     "indent": "off",
+    "default-case": "off",
+    "max-classes-per-file": "off",
+    "no-useless-constructor": "off",
+    "no-empty-function": "off",
+    "new-cap": "off",
+    "no-useless-return": "off",
+    "no-constructor-return": "off",
+    "func-names": "off",
     "max-len": [2, 500],
     "@typescript-eslint/no-unused-vars": 2,
     "no-console": "off",
@@ -38,7 +52,8 @@
   "env": {
     "browser": true,
     "node": true,
-    "jasmine": true
+    "jasmine": true,
+    "es6": true
   },
   "settings": {
     "import/core-modules": ["handlebars", "vite"],

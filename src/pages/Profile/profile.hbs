@@ -1,20 +1,18 @@
 <section class="profile__wrap">
-    {{#Button onClick=linkChat className="arrow__back" buttonType="button" }}
+    {{#Link className="arrow__back"  to="/messenger" }}
         <img src="{{arrowImg}}" alt="back">
-    {{/Button}}
-    {{{ ProfileAvatar profileName="Дмитрий" }}}
+    {{/Link}}
+    {{{ ProfileAvatar ref=avatarRef profileName=profileName avatarImg=avatarImg}}}
     <div class="profile__info-list">
         <ul>
             {{#each items }}
-                {{{ ProfileItem  itemName=this.itemName itemValue=this.itemValue }}}
+                {{{ ProfileItem  tagName=this.tagName ref=this.ref itemName=this.itemName itemValue=this.itemValue }}}
             {{/each}}
         </ul>
     </div>
     <div class="profile__info-btns">
-        {{{Button onClick=linkChangeInfo className="profile__info-btns-link" buttonType="button" label="Изменить данные"}}}
-        {{{Button onClick=linkChangePassword className="profile__info-btns-link" buttonType="button" label="Изменить пароль" }}}
-        <button class="profile__info-btns-logout" type="button">
-            Выйти
-        </button>
+        {{{Link className="profile__info-btns-link" label="Изменить данные" to="/settings"}}}
+        {{{Link className="profile__info-btns-link" label="Изменить пароль" to="/changePassword"}}}
+        {{{Button onClick=logout className="profile__info-btns-logout" buttonType="button" label="Выйти" }}}
     </div>
 </section>

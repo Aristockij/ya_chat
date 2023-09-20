@@ -1,55 +1,25 @@
 <section class="chat__wrap">
     <div class="chat__wrap-left">
         <form action="" class="form__search">
-            <input id="search" type="text" placeholder="Поиск" required>
-            <label for="search"></label>
+            {{{Input onChange=searchUser ref="searchRef" idInput="search" name="search" type="text" placeholder="создать чат" required="true"}}}
+            {{{Button buttonType="button" className="form__search-btn" onClick=addUser label="создать"}}}
         </form>
         <div class="chat__wrap-list">
-            <div class="chat__wrap-scroll">
-                {{#each users}}
-                    {{{ UserListItem userName=this.userName dateMes=this.dateMes message=this.message messCounter=this.messCounter }}}
+            <div class="chat__wrap-scrolls">
+                {{#each chats}}
+                    {{{ ChatListItem chatAvatar=this.chatAvatar onClick=onChat userName=this.userName dateMes=this.dateMes message=this.message.content messCounter=this.messCounter }}}
                 {{/each}}
             </div>
         </div>
         <div class="profile__links">
-            {{#Button onClick=linkProfile className="message__item-avatar" buttonType="button" }}
+            {{#Link to="/profile" className="message__item-avatar"}}
                 <img src="{{avatarImg}}" alt="avatar">
-            {{/Button}}
+            {{/Link}}
             <div class="message__item-avatar">
                 <img src="{{settingImg}}" alt="setting">
             </div>
         </div>
     </div>
-    <div class="chat__wrap-messages">
-        <div class="chat__wrap-info">
-            <div class="chat__wrap-name">
-                <div class="message__item-avatar">
-                    <img src="{{avatarImg}}" alt="avatar">
-                </div>
-                <div class="chat__wrap-name">
-                    Вася
-                </div>
-            </div>
-            <div class="chat__wrap-setting">
-                <img src="{{dotsImg}}" alt="dots">
-            </div>
-        </div>
-        <div class="chat__wrap-list">
-            <div class="chat__wrap-scroll">
-                {{{ InputMessage message="ккаой то текст" }}}
-                {{{ OutMessage message="тут тоже какой то текст" }}}
-            </div>
-        </div>
-        <form class="send__message" action="">
-            <button type="button" class="chat__wrap-file">
-                <img src="{{addFileImg}}" alt="file">
-            </button>
-            {{{ Input onChange=onChange }}}
-            {{#if errMes}}
-                <span class="send__message-err">пустое поле</span>
-            {{/if}}
-            {{{ SendMessageBtn onClick=onSubmit }}}
+    {{{Messenger}}}
 
-        </form>
-    </div>
 </section>

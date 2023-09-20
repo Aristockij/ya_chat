@@ -1,16 +1,9 @@
 import Block from '../../utils/Block';
 import template from './signIn.hbs';
-import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
-import HTTPTransport from '../../utils/fetch';
+import AuthController from "../../controllers/AuthController";
+import { SigninData } from '../../api/AuthAPI';
 
-
-const transport = new HTTPTransport();
-transport.get('http://localhost:3000',"GET" ,3000 ).then(response => {
-  console.log(response);
-}).catch(error => {
-  console.error(error);
-});
 
 export class SignIn extends Block {
   constructor() {
@@ -21,10 +14,6 @@ export class SignIn extends Block {
     }
 
     super({
-      onSignUp: ()=> {
-        render('signUp');
-      },
-
       onSubmit:(e: MouseEvent)=>{
         e.preventDefault();
         const fieldsName = this.props.fields;
@@ -45,7 +34,8 @@ export class SignIn extends Block {
         if (hasErrors) {
           return;
         }
-        console.log(val);
+
+        AuthController.signin(val as unknown as SigninData);
       },
       fields: [
         {

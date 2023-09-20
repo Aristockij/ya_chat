@@ -1,13 +1,13 @@
 import Block from '../../utils/Block';
 import template from './500.hbs';
-import {render} from "../../utils/render";
+import Router from "../../utils/Router";
 
 
 export class page500 extends Block {
     constructor() {
         super({
             linkChat: ()=>{
-                render('chat')
+                Router.go('chat')
             },
         });
     }

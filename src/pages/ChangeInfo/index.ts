@@ -1,20 +1,20 @@
 import Block from '../../utils/Block';
 import template from './changeInfo.hbs';
-import {render} from "../../utils/render";
 import {FormInput} from "../../components/FormInput";
 import arrow from "../../icons/arrow.svg";
+import {withStore} from "../../utils/Store";
+import MutateController from "../../controllers/UserController";
+import {UserData} from "../../api/UserAPI";
+import avatar from "../../icons/avatar.svg";
 
 export class ChangeInfo extends Block {
-    constructor() {
+    constructor(props: any) {
         const loginRegExp = /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i;
         const mailRegExp = /.+@.+\..+/i;
         const nameRegExp = /^[a-яё]+(?:[-][a-яё]+)*$/i
         const phoneRegExp = /^\+?\d{10,15}$/;
-
         super({
-            linkChat:()=>{
-                render('profile')
-            },
+
             onSubmit: (e: MouseEvent) => {
                 e.preventDefault();
                 const fieldsName = this.props.fields;
@@ -34,20 +34,32 @@ export class ChangeInfo extends Block {
                 }
 
                 if (hasErrors) {
-                    console.log(val);
                     return;
                 }
 
-                console.log(val);
+                MutateController.mutateUserInfo(val as UserData);
+
             },
+            avatarImg: props.avatarImg,
             arrowImg: arrow,
+            uploadAvatar: (e: Event)=>{
+                const fileInput = e.target as HTMLInputElement;
+                const files = fileInput.files;
+                if (files && files.length > 0) {
+                    const selectedFile = files[0];
+
+                    MutateController.mutateAvatar(selectedFile);
+                } else {
+                    console.error('Не выбран файл');
+                }
+            },
             fields: [
                 {
                     name: "email",
                     label: "Почта",
                     ref: "emailRef",
                     fieldType: "text",
-                    value: "dk@yandex.ru",
+                    fieldValue: props.email,
                     onFocusOut: (t: FocusEvent)=>{
                         const target = t.target as HTMLInputElement;
                         (this.refs.emailRef as FormInput).checkMatches(target.value, mailRegExp ,"символ @ обязателен");
@@ -62,7 +74,7 @@ export class ChangeInfo extends Block {
                     label: "Логин",
                     ref: "loginRef",
                     fieldType: "text",
-                    value: "dmitry",
+                    fieldValue: props.login,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.login = target.value;
@@ -77,7 +89,7 @@ export class ChangeInfo extends Block {
                     label: "Имя",
                     ref: "first_nameRef",
                     fieldType: "text",
-                    value: "Дмитрий",
+                    fieldValue: props.first_name,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.first_name = target.value;
@@ -92,7 +104,7 @@ export class ChangeInfo extends Block {
                     label: "Фамилия",
                     ref: "second_nameRef",
                     fieldType: "text",
-                    value: "Дк",
+                    fieldValue: props.second_name,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.second_name = target.value;
@@ -107,7 +119,7 @@ export class ChangeInfo extends Block {
                     label: "Имя в чате",
                     ref: "display_nameRef",
                     fieldType: "text",
-                    value: "Дк",
+                    fieldValue: props.display_name,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.display_name = target.value;
@@ -123,7 +135,7 @@ export class ChangeInfo extends Block {
                     ref: "phoneRef",
                     fieldType: "text",
                     showPass: true,
-                    value: "+7 (999) 999 99 99",
+                    fieldValue: props.phone,
                     onChange: (e: FocusEvent) => {
                         const target = e.target as HTMLInputElement;
                         val.phone = target.value;
@@ -135,18 +147,23 @@ export class ChangeInfo extends Block {
                 },
             ]
         });
-
         const val: Record<string, string> = {
-            email:  this.props.fields[0].value,
-            login: this.props.fields[1].value,
-            first_name: this.props.fields[2].value,
-            second_name: this.props.fields[3].value,
-            display_name: this.props.fields[4].value,
-            phone: this.props.fields[5].value,
+            email:  props.email,
+            login: props.login,
+            first_name: props.first_name,
+            second_name: props.second_name,
+            display_name: props.display_name,
+            phone: props.phone,
         };
     }
-
     render() {
         return this.compile(template, this.props);
     }
 }
+
+const withInfo = withStore((state) => ({
+    ...state.user,
+    avatarImg: state.user.avatar ? `https://ya-praktikum.tech/api/v2/resources/${state.user.avatar}` : avatar,
+}))
+
+export const ChangeInfoPage = withInfo(ChangeInfo);

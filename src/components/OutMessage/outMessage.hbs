@@ -1,3 +1,9 @@
-<div class="message__text message__output">
-    {{ message }}
-</div>
+{{#if isMine}}
+    <div class="message__text message__output">
+        {{ message }}
+    </div>
+    {{else}}
+    <div class="message__text message__input">
+        {{ message }}
+    </div>
+{{/if}}
