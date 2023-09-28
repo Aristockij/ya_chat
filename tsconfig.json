@@ -1,11 +1,16 @@
 {
+  "ts-node": {
+    "files": true,
+  },
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "es2016",
+    "module": "es6",
+    "moduleResolution": "nodenext",
     "allowJs": true,
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "allowImportingTsExtensions": true,
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
+    "noEmit": true,
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
