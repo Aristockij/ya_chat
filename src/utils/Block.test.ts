@@ -1,5 +1,5 @@
 import esmock from 'esmock';
-import { expect } from 'chai';
+import {expect} from 'chai';
 import sinon from 'sinon';
 import type BlockType from './Block.ts'
 
@@ -9,26 +9,44 @@ const eventBusMock = {
 }
 
 
-describe('Block', async () => {
-    const { default: Block } = await esmock('./Block', {
-        './EventBus': {
-            EventBus: class {
-                emit = eventBusMock.emit;
-                on = eventBusMock.on;
+describe('Block',  () => {
+
+    let Block;
+    let ComponentMock;
+
+    before( async () => {
+        const { default: ImportedBlock } =  await esmock('./Block', {
+            './EventBus.ts': {
+                EventBus: class {
+                    emit = eventBusMock.emit;
+                    on = eventBusMock.on;
+                }
             }
-        }
-    }) as { default: typeof BlockType };
+        }) as { default: typeof BlockType };
 
-    class ComponentMock extends Block {}
+        Block = ImportedBlock;
+        ComponentMock = class extends Block {
+            render(){
+                const fragment: DocumentFragment = new DocumentFragment();
 
-    it('should fire init event on initialization',   () => {
+                fragment.append(document.createElement('div'));
+
+                return fragment;
+            }
+        };
+    })
+
+    it('эмитится событие init',   () => {
         new ComponentMock({});
 
         expect(eventBusMock.emit.calledWith('init')).to.eq(true);
     });
+
+    it('эмитится событие CDU ',   () => {
+        const component = new ComponentMock({});
+
+        component.setProps({test: 'test'})
+
+        expect(eventBusMock.emit.calledWith('flow:component-did-update')).to.eq(true);
+    });
 });
-describe('тест теста', ()=>{
-    it('этот тест запустится в любом случае',()=>{
-        console.log('done')
-    })
-})
