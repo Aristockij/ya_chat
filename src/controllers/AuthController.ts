@@ -1,7 +1,7 @@
-import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
-import store from '../utils/Store';
-import router from '../utils/Router';
-import MessagesController from './MessagesController';
+import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI.ts';
+import store from '../utils/Store.ts';
+import router from '../utils/Router.ts';
+import MessagesController from './MessagesController.ts';
 
 export class AuthController {
   private readonly api: AuthAPI;
@@ -36,7 +36,6 @@ export class AuthController {
       await this.api.signup(data);
 
       await this.fetchUser();
-      console.log(data);
       router.go('/messenger');
     } catch (e: any) {
       console.error(e.message);

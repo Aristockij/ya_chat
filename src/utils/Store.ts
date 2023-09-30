@@ -1,9 +1,9 @@
-import { set } from "../helpers/setAndMergeHelper";
-import { EventBus } from './EventBus';
-import Block from './Block';
-import { User } from '../api/AuthAPI';
-import { ChatInfo } from '../api/ChatAPI';
-import { Message } from '../controllers/MessagesController';
+import { set } from "../helpers/setAndMergeHelper.ts";
+import { EventBus } from './EventBus.ts';
+import Block from './Block.ts';
+import { User } from '../api/AuthAPI.ts';
+import { ChatInfo } from '../api/ChatAPI.ts';
+import { Message } from '../controllers/MessagesController.ts';
 
 type PropsObject = Record<string, any>;
 

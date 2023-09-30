@@ -6,6 +6,7 @@
     "test": "mocha",
     "dev": "vite",
     "prebuild": "tsc --noEmit",
+    "lint": "eslint .",
     "lint:styles": "stylelint \"**/*.scss\"",
     "build": "vite build",
     "start": "npm run build && node server.js",

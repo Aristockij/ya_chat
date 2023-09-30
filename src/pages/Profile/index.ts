@@ -1,8 +1,8 @@
-import Block from '../../utils/Block';
+import Block from '../../utils/Block.ts';
 import template from './profile.hbs';
 import arrow from "../../icons/arrow.svg";
-import { withStore } from '../../utils/Store';
-import AuthController from "../../controllers/AuthController";
+import { withStore } from '../../utils/Store.ts';
+import AuthController from "../../controllers/AuthController.ts";
 import avatar from '../../icons/avatar.svg';
 
 
@@ -11,7 +11,8 @@ class Profile extends Block {
         super({
             arrowImg: arrow,
             logout: ()=> {
-                AuthController.logout();
+                console.log('logout')
+                // AuthController.logout();
             },
             profileName: props.first_name,
             avatarRef:"avatarRef",
