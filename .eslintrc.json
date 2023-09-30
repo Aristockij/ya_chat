@@ -10,6 +10,7 @@
     "prettier"
   ],
   "rules": {
+    "import/extensions": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
     "no-prototype-builtins": "off",
