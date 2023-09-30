@@ -10,7 +10,6 @@
     "prettier"
   ],
   "rules": {
-    "import/extensions": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
     "no-prototype-builtins": "off",
@@ -43,10 +42,10 @@
       "error",
       "ignorePackages",
       {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
+        "js": "ignorePackages",
+        "jsx": "ignorePackages",
+        "ts": "ignorePackages",
+        "tsx": "ignorePackages"
       }
     ]
   },
