@@ -10,19 +10,16 @@
 //       buttonType: 'button',
 //       typeDiv: true,
 //       onClick: onClickFake,
-//       events: {
-//         click: sinon.fake(),
-//       }
 //     });
 //
 //     const element = button.element as HTMLButtonElement;
+//     console.log(element)
+//     console.log(' ')
+//     console.log(button)
 //     element.click();
 //
-//     // sinon.assert.calledOnce(onClickFake);
-//     //
-//     // sinon.assert.calledOnce(button.events.click);
-//     //
-//     // sinon.assert.calledOn(button.events.click, element);
+//     sinon.assert.calledOnce(onClickFake);
 //
+//     expect(onClickFake).to.eq(true);
 //   });
 // });

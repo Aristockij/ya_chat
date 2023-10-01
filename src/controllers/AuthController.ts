@@ -10,7 +10,7 @@ export class AuthController {
     this.api = API;
   }
 
-  async signin(data: SigninData) {
+   async signin(data: SigninData) {
     try {
       await this.api.signin(data);
 

@@ -6,7 +6,7 @@ interface ButtonProps {
   buttonType: string;
   typeDiv: boolean;
   onClick?: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }

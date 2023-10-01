@@ -1,27 +1,28 @@
-import sinon from 'sinon';
 import { AuthController } from './AuthController.ts';
-import API from '../api/AuthAPI.ts';
 import { expect } from 'chai';
+import esmock from 'esmock';
+import sinon, {SinonFakeXMLHttpRequest, SinonFakeXMLHttpRequestStatic} from 'sinon';
+import HTTPTransport from "../utils/HTTPTransport.ts";
+
 
 describe('AuthController', () => {
-    it('should call api.signin with the provided data', async () => {
-        // Создайте заглушку (stub) для метода signin вашего объекта api
-        // const apiSigninStub = sinon.stub(API, 'signin');
+    let mockAuth;
+    let signinFake =  sinon.fake();
 
-        // Создайте экземпляр контроллера
-        // const authController = new AuthController();
-        //
-        // // Тестовые данные для входа
-        // const testData = { username: 'testUser', password: 'testPassword' };
-        //
-        // // Вызовите метод signin контроллера с тестовыми данными
-        // await authController.signin(testData);
-        //
-        // // Проверьте, что api.signin был вызван с ожидаемыми аргументами
-        // expect(apiSigninStub.calledOnce).to.be.true;
-        // expect(apiSigninStub.calledWith(testData)).to.be.true;
-        //
-        // // Восстановите оригинальный метод после теста
-        // apiSigninStub.restore();
-    });
+    before(async ()=>{
+
+        const {api: myAuthController} = await esmock('./AuthController.ts', {
+            '../api/AuthAPI.ts': {
+                signin: signinFake
+            }
+        })
+
+        mockAuth = myAuthController;
+    })
+   it('test',  ()=>{
+       const testData = { login: 'testUser', password: 'testPassword' };
+       mockAuth.signin(testData);
+
+       sinon.assert.calledWithExactly(mockAuth.signin, testData);
+   })
 });
