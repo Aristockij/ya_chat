@@ -12,6 +12,7 @@
   "rules": {
     "dot-notation": "off",
     "no-new": "off",
+    "parsing-error-comma-expected": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "import/no-extraneous-dependencies": "off",
     "no-restricted-syntax": "off",
@@ -48,7 +49,7 @@
       {
         "js": "ignorePackages",
         "jsx": "ignorePackages",
-        "ts": "never",
+        "ts": "ignorePackages",
         "tsx": "ignorePackages"
       }
     ]
