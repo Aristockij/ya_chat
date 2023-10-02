@@ -1,14 +1,19 @@
 import Block from '../utils/Block.ts';
 import Router from '../utils/Router.ts';
 
-export function withRouter(Component: typeof Block<any>) {
+interface BlockConstructable<P> {
+    new(props: P): Block<P>;
+}
+
+
+export function withRouter(Component: BlockConstructable<any>) {
     type Props = PropsWithRouter & {
         [P in keyof P]: P;
     };
 
     return class WithRouter extends Component {
         constructor(props: Props & PropsWithRouter) {
-            super({ ...props, router: Router, });
+            super({ ...props, router: Router});
         }
     }
 }

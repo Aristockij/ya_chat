@@ -36,9 +36,12 @@ export class Store extends EventBus {
 
 const store = new Store();
 
+interface WithStoreConstructable<P, SP> {
+    new(props: P & SP): Block<P & SP>;
+}
 
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
-    return function wrap<P extends PropsObject>(Component: typeof Block<SP & P>) {
+    return function wrap<P extends PropsObject>(Component: WithStoreConstructable<P, SP>) {
         return class WithStore extends Component {
 
             constructor(props: Omit<P, keyof SP>) {
