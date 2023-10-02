@@ -18,7 +18,7 @@ class BaseLink extends Block<LinkProps> {
                 click: () => {
                     this.navigate();
                 }
-            },
+            }
         });
     }
 
