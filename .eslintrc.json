@@ -9,9 +9,7 @@
     "airbnb-base",
     "prettier"
   ],
-  "exclude": [
-    "node_modules"
-  ],
+  "ignorePatterns": ["node_modules/"],
   "rules": {
     "comma-dangle": 0,
     "dot-notation": "off",
