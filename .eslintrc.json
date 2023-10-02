@@ -9,7 +9,6 @@
     "airbnb-base",
     "prettier"
   ],
-  "ignorePatterns": ["node_modules/"],
   "rules": {
     "comma-dangle": 0,
     "dot-notation": "off",
