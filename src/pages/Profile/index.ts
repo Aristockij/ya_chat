@@ -11,8 +11,7 @@ class Profile extends Block {
         super({
             arrowImg: arrow,
             logout: ()=> {
-                console.log('logout')
-                // AuthController.logout();
+                AuthController.logout();
             },
             profileName: props.first_name,
             avatarRef:"avatarRef",

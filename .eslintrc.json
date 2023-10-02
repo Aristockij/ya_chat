@@ -10,6 +10,9 @@
     "prettier"
   ],
   "rules": {
+    "no-new": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/no-extraneous-dependencies": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
     "no-prototype-builtins": "off",

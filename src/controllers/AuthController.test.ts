@@ -1,11 +1,11 @@
-import { AuthController } from './AuthController.ts';
 import esmock from 'esmock';
 import sinon from 'sinon';
+import { describe, before, it } from 'mocha';
 
 
 describe('AuthController', () => {
     let mockAuth;
-    let signinFake =  sinon.fake();
+    const signinFake =  sinon.fake();
 
     before(async ()=>{
 

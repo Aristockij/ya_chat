@@ -1,7 +1,7 @@
-import { Link } from './index.ts';
 import { expect } from 'chai';
-import Router from '../../utils/Router.ts';
 import sinon from 'sinon';
+import { Link } from './index.ts';
+import Router from '../../utils/Router.ts';
 
 describe('Link', () => {
   it('Проверка рендера компонента Link', () => {

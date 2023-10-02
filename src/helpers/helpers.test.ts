@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { set } from './setAndMergeHelper.ts';
+import { describe, beforeEach, it } from 'mocha';
 
 describe('set function', () => {
   const keypath = 'test';

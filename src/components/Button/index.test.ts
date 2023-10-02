@@ -1,5 +1,5 @@
-import { Button } from './index.ts';
 import sinon from 'sinon';
+import { Button } from './index.ts';
 
 describe('Button', () => {
   it('Проверка функции клика', () => {
