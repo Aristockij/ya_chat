@@ -5,10 +5,9 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "es6",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "allowJs": true,
     "useDefineForClassFields": true,
-    "allowImportingTsExtensions": true,
     "lib": ["ESNext", "DOM"],
     "noEmit": true,
     "strict": true,

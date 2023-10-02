@@ -11,13 +11,13 @@ describe('set function', () => {
     obj = {};
   });
 
-  it('should set a value by keypath to the object', () => {
+  it('должен установить значение по ключевому пути в объекте', () => {
     set(obj, keypath, value);
 
     expect(obj).to.haveOwnProperty(keypath, value);
   });
 
-  it('should return original object', () => {
+  it('Должен вернуть исходный объект', () => {
     const result = set(obj, keypath, value);
 
     obj['test2'] = 'another value';
@@ -25,7 +25,7 @@ describe('set function', () => {
     expect(result).to.equal(obj);
   });
 
-  it('should return original object if it\'s is not an object', () => {
+  it('Должен вернуть исходный объект, если это не объект', () => {
     const notAnObject = 'string';
 
     const result = set(notAnObject, keypath, value);
@@ -33,7 +33,7 @@ describe('set function', () => {
     expect(result).to.eq(notAnObject);
   });
 
-  it('should throw an error if path is not a string', () => {
+  it('Должен выбрасывать ошибку, если путь не является строкой', () => {
     const keypathNotAString = 10;
 
     const f = () => set(obj, keypathNotAString, value);
