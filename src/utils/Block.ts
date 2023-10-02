@@ -123,6 +123,7 @@ class Block<P extends Record<string, any> = any> {
   }
 
   private _render() {
+    this._removeEvents();
     const fragment = this.render();
 
     const newElement = fragment.firstElementChild as HTMLElement;
@@ -134,7 +135,6 @@ class Block<P extends Record<string, any> = any> {
     this._element = newElement;
 
     this._addEvents();
-    this._removeEvents();
   }
 
   protected compile(template: (context: any) => string, context: any) {

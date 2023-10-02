@@ -1,8 +1,6 @@
 import { AuthController } from './AuthController.ts';
-import { expect } from 'chai';
 import esmock from 'esmock';
-import sinon, {SinonFakeXMLHttpRequest, SinonFakeXMLHttpRequestStatic} from 'sinon';
-import HTTPTransport from "../utils/HTTPTransport.ts";
+import sinon from 'sinon';
 
 
 describe('AuthController', () => {
@@ -19,7 +17,7 @@ describe('AuthController', () => {
 
         mockAuth = myAuthController;
     })
-   it('test',  ()=>{
+   it('signin() должен проверить данные которые принимает аргументом',  ()=>{
        const testData = { login: 'testUser', password: 'testPassword' };
        mockAuth.signin(testData);
 

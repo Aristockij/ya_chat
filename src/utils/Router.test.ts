@@ -25,14 +25,14 @@ describe('Router', () => {
     getContent = getContentFake;
   } as unknown as BlockProps;
 
-  it('use() should return Router instance', () => {
+  it('use() должен вернуть инстенс роутера', () => {
     const result = Router.use('/', BlockMock);
 
     expect(result).to.eq(Router);
   });
 
   describe('.back()', () => {
-    it('should render a page on history back action', () => {
+    it('должен рендерить страницу при возврашении', () => {
       Router
         .use('/', BlockMock)
         .start();
@@ -43,7 +43,7 @@ describe('Router', () => {
     });
   });
 
-  it('should render a page on start', () => {
+  it('должен рендерить страницу при старте', () => {
     Router
       .use('/', BlockMock)
       .start();
