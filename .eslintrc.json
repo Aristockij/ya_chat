@@ -51,7 +51,7 @@
         "ts": "ignorePackages",
         "tsx": "ignorePackages"
       }
-    ],
+    ]
   },
   "env": {
     "browser": true,
