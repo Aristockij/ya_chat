@@ -48,7 +48,7 @@
       {
         "js": "ignorePackages",
         "jsx": "ignorePackages",
-        "ts": "ignorePackages",
+        "ts": "never",
         "tsx": "ignorePackages"
       }
     ]
