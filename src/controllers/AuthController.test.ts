@@ -4,7 +4,7 @@ import { describe, before, it } from 'mocha';
 
 
 describe('AuthController', () => {
-    let mockAuth;
+    let mockAuth: any;
     const signinFake =  sinon.fake();
 
     before(async ()=>{

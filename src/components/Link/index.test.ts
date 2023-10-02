@@ -15,7 +15,7 @@ describe('Link', () => {
     expect(element).to.be.instanceof(window.HTMLSpanElement)
   });
 
-  it('should go to passed route on click', () => {
+  it('должен перейти на указанный маршрут при клике', () => {
     const link = new Link({ to: '/' });
     const spy = sinon.spy(Router, 'go');
     const element = link.element as HTMLSpanElement;

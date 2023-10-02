@@ -1,6 +1,6 @@
+import { expect } from 'chai';
 import sinon, { SinonFakeXMLHttpRequest, SinonFakeXMLHttpRequestStatic } from 'sinon';
 import HTTPTransport from './HTTPTransport.ts';
-import { expect } from 'chai';
 
 
 describe('HTTPTransport', () => {
@@ -11,6 +11,7 @@ describe('HTTPTransport', () => {
   beforeEach(() => {
     xhr = sinon.useFakeXMLHttpRequest();
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     global.XMLHttpRequest = xhr;
 

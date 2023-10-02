@@ -1,8 +1,8 @@
 import esmock from 'esmock';
+import { describe, before, it } from 'mocha';
 import {expect} from 'chai';
 import sinon from 'sinon';
 import type BlockType from './Block.ts'
-import { describe, before, it } from 'mocha';
 
 const eventBusMock = {
     on: sinon.fake(),
