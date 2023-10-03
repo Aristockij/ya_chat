@@ -9,9 +9,8 @@ export interface PropsWithRouter {
     router: typeof Router;
 }
 
-
-export function withRouter<P extends Record<string, any> & PropsWithRouter>(Component: BlockConstructable<P>) {
-    type Props = P & PropsWithRouter;
+export function withRouter<P extends PropsWithRouter>(Component: BlockConstructable<P>) {
+    type Props = P;
 
     return class WithRouter extends Component {
         constructor(props: Props) {
