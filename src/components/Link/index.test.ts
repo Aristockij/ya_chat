@@ -5,11 +5,11 @@ import Router from '../../utils/Router.ts';
 
 describe('Link', () => {
   it('Проверка рендера компонента Link', () => {
-    new Link({ to: '/' });
+    new Link({ to: '/', router: Router });
   });
 
   it('элемент возвращает span', () => {
-    const link = new Link({ to: '/' });
+    const link = new Link({ to: '/', router: Router });
     const element = link.element;
 
     expect(element).to.be.instanceof(window.HTMLSpanElement)

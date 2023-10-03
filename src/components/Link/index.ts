@@ -4,7 +4,7 @@ import template from './link.hbs';
 
 interface LinkProps extends PropsWithRouter {
     to: string;
-    label: string;
+    label?: string;
     events?: {
         click: () => void;
     };
