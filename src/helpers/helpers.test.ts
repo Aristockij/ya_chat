@@ -12,12 +12,16 @@ describe('set function', () => {
   });
 
   it('должен установить значение по ключевому пути в объекте', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     set(obj, keypath, value);
 
     expect(obj).to.haveOwnProperty(keypath, value);
   });
 
   it('Должен вернуть исходный объект', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const result = set(obj, keypath, value);
 
     obj['test2'] = 'another value';
@@ -28,6 +32,8 @@ describe('set function', () => {
   it('Должен вернуть исходный объект, если это не объект', () => {
     const notAnObject = 'string';
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const result = set(notAnObject, keypath, value);
 
     expect(result).to.eq(notAnObject);
