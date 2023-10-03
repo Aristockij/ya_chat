@@ -5,7 +5,7 @@ import { set } from './setAndMergeHelper.ts';
 describe('set function', () => {
   const keypath = 'test';
   const value = 'some value';
-  let obj: Record<string, unknown>;
+  let obj: Record<string, any>;
 
   beforeEach(() => {
     obj = {};
