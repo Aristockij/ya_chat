@@ -36,7 +36,7 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-interface WithStoreConstructable<P, SP> {
+interface WithStoreConstructable<P extends Record<string, any>, SP> {
     new(props: P & SP): Block<P & SP>;
 }
 
