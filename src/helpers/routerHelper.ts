@@ -6,10 +6,8 @@ interface BlockConstructable<P> {
 }
 
 
-export function withRouter(Component: BlockConstructable<any>) {
-    type Props = PropsWithRouter & {
-        [P in keyof P]: P;
-    };
+export function withRouter<P extends PropsWithRouter>(Component: BlockConstructable<P>) {
+    type Props = P & PropsWithRouter;
 
     return class WithRouter extends Component {
         constructor(props: Props & PropsWithRouter) {
