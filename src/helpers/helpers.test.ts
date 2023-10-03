@@ -36,7 +36,9 @@ describe('set function', () => {
   it('Должен выбрасывать ошибку, если путь не является строкой', () => {
     const keypathNotAString = 10;
 
-    const f = () => set(obj, keypathNotAString, value);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const f = () => set(obj, keypathNotAString, value);
 
     expect(f).to.throw(Error);
   });

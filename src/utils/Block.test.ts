@@ -12,8 +12,9 @@ const eventBusMock = {
 
 describe('Block',  () => {
 
-    let Block;
-    let ComponentMock;
+    let Block: typeof BlockType;
+    let ComponentMock: typeof BlockType;
+
 
     before( async () => {
         const { default: ImportedBlock } =  await esmock('./Block', {
