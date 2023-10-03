@@ -57,7 +57,7 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
                     this.setProps({ ...stateProps });
                 });
             }
-        }
+        } as typeof Block;
     }
 }
 
