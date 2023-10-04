@@ -16,9 +16,13 @@ export class AuthController {
 
       await this.fetchUser();
 
-      router.go('/messenger');
+      setTimeout(()=>{
+        router.go('/messenger');
+      },100)
     } catch (e: any) {
-      console.error(e.message);
+      if(e.reason === "User already in system"){
+        router.go("/messenger");
+      }
     }
   }
 
