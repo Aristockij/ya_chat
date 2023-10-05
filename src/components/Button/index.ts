@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../utils/Block.ts';
 import template from './button.hbs';
 
 interface ButtonProps {
@@ -6,7 +6,7 @@ interface ButtonProps {
   buttonType: string;
   typeDiv: boolean;
   onClick?: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }

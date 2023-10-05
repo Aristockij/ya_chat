@@ -58,7 +58,6 @@ class ChatView extends Block{
 
                 MessagesController.sendMessage(this.props.selectedChat!, val.message);
 
-                console.log(this.props);
                 val.message = ''
             },
             addFile: () => {

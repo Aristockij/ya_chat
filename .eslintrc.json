@@ -10,6 +10,11 @@
     "prettier"
   ],
   "rules": {
+    "comma-dangle": 0,
+    "dot-notation": "off",
+    "no-new": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/no-extraneous-dependencies": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
     "no-prototype-builtins": "off",
@@ -42,10 +47,10 @@
       "error",
       "ignorePackages",
       {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
+        "js": "ignorePackages",
+        "jsx": "ignorePackages",
+        "ts": "ignorePackages",
+        "tsx": "ignorePackages"
       }
     ]
   },
@@ -66,5 +71,11 @@
         "directory": "tsconfig.json"
       }
     }
-  }
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts"
+  ]
 }

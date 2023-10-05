@@ -1,9 +1,9 @@
-import { set } from "../helpers/setAndMergeHelper";
-import { EventBus } from './EventBus';
-import Block from './Block';
-import { User } from '../api/AuthAPI';
-import { ChatInfo } from '../api/ChatAPI';
-import { Message } from '../controllers/MessagesController';
+import { set } from "../helpers/setAndMergeHelper.ts";
+import { EventBus } from './EventBus.ts';
+import Block from './Block.ts';
+import { User } from '../api/AuthAPI.ts';
+import { ChatInfo } from '../api/ChatAPI.ts';
+import { Message } from '../controllers/MessagesController.ts';
 
 type PropsObject = Record<string, any>;
 
@@ -36,9 +36,12 @@ export class Store extends EventBus {
 
 const store = new Store();
 
+interface WithStoreConstructable<P extends Record<string, any>, SP> {
+    new(props: P & SP): Block<P & SP>;
+}
 
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
-    return function wrap<P extends PropsObject>(Component: typeof Block<SP & P>) {
+    return function wrap<P extends PropsObject>(Component: WithStoreConstructable<P, SP>) {
         return class WithStore extends Component {
 
             constructor(props: Omit<P, keyof SP>) {
@@ -54,7 +57,7 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
                     this.setProps({ ...stateProps });
                 });
             }
-        }
+        } as typeof Block;
     }
 }
 

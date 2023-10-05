@@ -1,8 +1,8 @@
-import Block from '../../utils/Block';
+import Block from '../../utils/Block.ts';
 import template from './profile.hbs';
 import arrow from "../../icons/arrow.svg";
-import { withStore } from '../../utils/Store';
-import AuthController from "../../controllers/AuthController";
+import { withStore } from '../../utils/Store.ts';
+import AuthController from "../../controllers/AuthController.ts";
 import avatar from '../../icons/avatar.svg';
 
 

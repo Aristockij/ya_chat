@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid';
-import {EventBus} from "./EventBus";
+import {EventBus} from "./EventBus.ts";
 
 
 class Block<P extends Record<string, any> = any> {
@@ -123,6 +123,7 @@ class Block<P extends Record<string, any> = any> {
   }
 
   private _render() {
+    this._removeEvents();
     const fragment = this.render();
 
     const newElement = fragment.firstElementChild as HTMLElement;
@@ -134,7 +135,6 @@ class Block<P extends Record<string, any> = any> {
     this._element = newElement;
 
     this._addEvents();
-    // this._removeEvents();
   }
 
   protected compile(template: (context: any) => string, context: any) {
@@ -188,14 +188,6 @@ class Block<P extends Record<string, any> = any> {
   _createDocumentElement(tagName: string) {
     // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
-  }
-
-  show() {
-    this.getContent()!.style.display = "block";
-  }
-
-  hide() {
-    this.getContent()!.style.display = "none";
   }
 }
 

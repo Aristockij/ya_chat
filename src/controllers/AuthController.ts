@@ -1,7 +1,7 @@
-import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
-import store from '../utils/Store';
-import router from '../utils/Router';
-import MessagesController from './MessagesController';
+import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI.ts';
+import store from '../utils/Store.ts';
+import router from '../utils/Router.ts';
+import MessagesController from './MessagesController.ts';
 
 export class AuthController {
   private readonly api: AuthAPI;
@@ -10,15 +10,19 @@ export class AuthController {
     this.api = API;
   }
 
-  async signin(data: SigninData) {
+   async signin(data: SigninData) {
     try {
       await this.api.signin(data);
 
       await this.fetchUser();
 
-      router.go('/messenger');
+      setTimeout(()=>{
+        router.go('/messenger');
+      },100)
     } catch (e: any) {
-      console.error(e.message);
+      if(e.reason === "User already in system"){
+        router.go("/messenger");
+      }
     }
   }
 
@@ -36,7 +40,6 @@ export class AuthController {
       await this.api.signup(data);
 
       await this.fetchUser();
-      console.log(data);
       router.go('/messenger');
     } catch (e: any) {
       console.error(e.message);
